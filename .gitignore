@@ -26,6 +26,13 @@ dist-ssr
 # OS metadata
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# Migration/utility scripts
+update_i18n.js
+update_i18n_remaining.cjs
+update_procurement.cjs
+update_team_docs_analytics_build.cjs
 
 # VUE/Vite
 .env
