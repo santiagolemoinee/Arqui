@@ -1,5 +1,9 @@
 import React, { useRef, useEffect, useState, memo, useCallback } from 'react';
+import { useLang } from './LangContext.jsx';
+import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, AnimatePresence, useSpring } from 'framer-motion';
+import SharedNavbar from './components/SharedNavbar';
+import SharedFooter from './components/SharedFooter';
 import {
     Building2,
     Wallet,
@@ -49,11 +53,11 @@ const TRANSLATIONS = {
         },
         build: {
             tag: 'Productos', title1: 'El Momento del Cambio: Donde el Caos se Convierte en', titleHighlight: 'Crecimiento',
-            desc: 'Abandona la fragmentación y toma el liderazgo de tu negocio. Arqui despliega el nuevo estándar de confianza: una arquitectura diseñada para profesionalizar la ejecución de obra, certificar la comercialización del activo, agilizar el acceso al capital y elevar la vida en comunidad junto a una administración inteligente. Es hora de escalar tu visión con una transparencia sistémica que el mercado nunca ha visto. ¿Estás listo para el siguiente nivel?',
-            buildTitle: 'Arqui Build: Control Total', buildDesc: 'Digitalizamos la ingeniería de campo y financiera. Seguimiento en tiempo real de cada tarea, costo y desvío para asegurar el retorno de inversión.',
+            desc: 'Abandona la fragmentación y toma el liderazgo de tu negocio. Arqy despliega el nuevo estándar de confianza: una arquitectura diseñada para profesionalizar la ejecución de obra, certificar la comercialización del activo, agilizar el acceso al capital y elevar la vida en comunidad junto a una administración inteligente. Es hora de escalar tu visión con una transparencia sistémica que el mercado nunca ha visto. ¿Estás listo para el siguiente nivel?',
+            buildTitle: 'Arqy Build: Control Total', buildDesc: 'Digitalizamos la ingeniería de campo y financiera. Seguimiento en tiempo real de cada tarea, costo y desvío para asegurar el retorno de inversión.',
             buildFeatures: ['Cronograma sincronizado con obra física', 'Alertas de desvío financiero en tiempo real', 'Dashboard de presupuesto vs. real'],
             learnMore: 'Ver más', timelineTitle: 'Sincronización en Tiempo Real: Tu Obra en Movimiento.',
-            timelineDesc: 'Supera la incertidumbre de la gestión tradicional. Arqui Build te permite visualizar tareas simultáneas, detectar cuellos de botella antes de que ocurran y asegurar que cada equipo esté alineado con el ritmo real de ejecución.',
+            timelineDesc: 'Supera la incertidumbre de la gestión tradicional. Arqy Build te permite visualizar tareas simultáneas, detectar cuellos de botella antes de que ocurran y asegurar que cada equipo esté alineado con el ritmo real de ejecución.',
             projectTimeline: 'Project timeline', teamLabel: 'Team:',
             weeks: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4', 'Sem 5', 'Sem 6', 'Sem 7'],
             tasks: ['Movimiento de Suelos', 'Plateas de Fundación', 'Estructura Nivel 1', 'Instalaciones Sanitarias', 'Llenado de Losa'],
@@ -63,52 +67,52 @@ const TRANSLATIONS = {
             months: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul'],
         },
         state: {
-            title: 'Arqui State: Marketplace con Trazabilidad.', desc: 'Unidades verificadas con historial real. El comprador accede a la evidencia de construcción y estatus legal en un solo clic.',
-            learnMore: 'Ver más',
+            title: 'Arqy State: Marketplace con Trazabilidad.', desc: 'Unidades verificadas con historial real. El comprador accede a la evidencia de construcción y estatus legal en un solo clic.',
+            learnMore: 'Próximamente',
             bullets: ['Transparencia en Preventa: Accede al historial constructivo real y cronogramas de entrega certificados directamente por el avance físico de la obra.', 'Inventario Dinámico: Disponibilidad en vivo para brokers y compradores, con la capacidad de reservar unidades de forma digital y acceder a toda la documentación técnica de forma inmediata.', 'Evidencia Certificada: Visualiza el progreso mediante fotos y videos históricos que garantizan la calidad de los materiales y procesos estructurales antes de la entrega.'],
         },
         home: {
             bubble1Title: 'Votacion de consorcio iniciada', bubble2: '🙋 Hola vecinos, alguien sabe a que hora abre el SUM hoy?', bubble3: '🕘 Zoom reservado para las 9:15',
-            title: 'Arqui Home: Tu Edificio es una Red Social.', desc: 'Gestión inteligente para residentes. Vota, reserva y accede a la memoria técnica de tu hogar desde una única plataforma digital.',
-            features: ['Votaciones de Consorcio Verificadas', 'Booking de Amenities Inteligente', 'Acceso Remoto a Memoria Técnica'], learnMore: 'Ver más',
+            title: 'Arqy Home: Tu Edificio es una Red Social.', desc: 'Gestión inteligente para residentes. Vota, reserva y accede a la memoria técnica de tu hogar desde una única plataforma digital.',
+            features: ['Votaciones de Consorcio Verificadas', 'Booking de Amenities Inteligente', 'Acceso Remoto a Memoria Técnica'], learnMore: 'Próximamente',
         },
         management: {
-            title: 'Arqui Management', desc: 'Gestión inteligente del edificio. Coordiná proveedores, administrá gastos y conectá a tu equipo desde un solo lugar con IoT e inteligencia artificial.',
-            learnMore: 'Ver más', controlTitle: 'Tu edificio, bajo control.',
+            title: 'Arqy Management', desc: 'Gestión inteligente del edificio. Coordiná proveedores, administrá gastos y conectá a tu equipo desde un solo lugar con IoT e inteligencia artificial.',
+            learnMore: 'Próximamente', controlTitle: 'Tu edificio, bajo control.',
             controlDesc: 'Maximiza la vida útil del inmueble mediante el monitoreo de sistemas vitales. Detectamos anomalías antes de que se conviertan en costos imprevistos, reduciendo expensas mediante la eficiencia técnica y el mantenimiento preventivo real.',
             energyLabel: 'Eficiencia energética:', elevatorAlert: '⚠️ Ascensor A:', elevatorDesc: 'Mantenimiento preventivo urgente. Próximo service reglamentario: 10 de Marzo',
-            marketplaceTitle: 'Marketplace de Proveedores.', marketplaceDesc: 'Profesionales y proveedores de servicios pueden ofrecer su talento directamente en el ecosistema Arqui. Gestiona tareas de mantenimiento técnico o limpieza con pagos integrados en Tokens ARQY y calificaciones verificadas.',
+            marketplaceTitle: 'Marketplace de Proveedores.', marketplaceDesc: 'Profesionales y proveedores de servicios pueden ofrecer su talento directamente en el ecosistema Arqy. Gestiona tareas de mantenimiento técnico o limpieza con pagos integrados en Tokens ARQY y calificaciones verificadas.',
             searchPlaceholder: 'Buscar servicio o proveedor...', services: ['Limpieza', 'Mant. Eléctrico', 'Climatización', 'Jardinería', 'Seguridad', 'Transporte', 'Plomería', 'Pintura', 'Cerrajería'],
         },
         capital: {
-            title: 'Arqui Capital: La Infraestructura de Inversión', desc: 'Arqui Capital es el puente que conecta el mercado de capitales con la ejecución real en el terreno. Eliminamos la opacidad financiera mediante un sistema de inversión basado en datos verificables, no en promesas.',
-            learnMore: 'Ver más', microTitle: 'Micro-Inversión y Crowdfunding',
-            microDesc: 'A través del Token ARQY, cualquier persona puede financiar proyectos específicos con montos mínimos. El activo inmobiliario funciona como garantía real, y la trazabilidad de Arqui Build asegura que cada peso invertido se refleje en el avance físico de la propiedad.',
+            title: 'Arqy Capital: La Infraestructura de Inversión', desc: 'Arqy Capital es el puente que conecta el mercado de capitales con la ejecución real en el terreno. Eliminamos la opacidad financiera mediante un sistema de inversión basado en datos verificables, no en promesas.',
+            learnMore: 'Próximamente', microTitle: 'Micro-Inversión y Crowdfunding',
+            microDesc: 'A través del Token ARQY, cualquier persona puede financiar proyectos específicos con montos mínimos. El activo inmobiliario funciona como garantía real, y la trazabilidad de Arqy Build asegura que cada peso invertido se refleje en el avance físico de la propiedad.',
             tokenTitle: 'El Ciclo Económico del Token ARQY', tokenDesc: 'El token no es solo inversión; es la moneda de cambio del ecosistema. Desde micro-inversiones en Capital hasta el pago de service providers en Property Management, ARQY crea un loop económico interno que revaloriza el activo inmobiliario digitalmente.',
         },
         personas: {
             tag: 'USUARIOS REALES',
             title: 'Personas Reales, Soluciones Reales.',
             subtitle: 'Desarrolladores, inversores, administradores, residentes y compradores. Cada uno con su plataforma, todos conectados al mismo activo.',
-            people: [{ name: 'Constructores', desc: 'Asigná tareas, medí avances y llevá el registro de proveedores para que tu proyecto avance de manera óptima.', img: '/images/Constructor.png' }, { name: 'Desarrolladores', desc: 'Controlá cada etapa del desarrollo inmobiliario con datos en tiempo real y trazabilidad completa del proyecto.', img: '/images/Arquitect.png' }, { name: 'Inversores', desc: 'Accedé a oportunidades de inversión respaldadas por activos reales con transparencia total y rendimientos verificables.', img: '/images/Investor.jpg' }, { name: 'Administradores', desc: 'Gestioná edificios de forma eficiente con herramientas de monitoreo, mantenimiento preventivo y comunicación directa.', img: '/images/Administrator.png' }, { name: 'Residentes', desc: 'Viví una experiencia conectada: reservas, votaciones, reclamos y comunidad en un solo lugar.', img: '/images/Resident.png' }, { name: 'Compradores', desc: 'Seguí el avance real de tu futura propiedad y tomá decisiones informadas con datos verificados.', img: '/images/Buyer.png' }, { name: 'Brokers', desc: 'Accedé a información verificada de propiedades y proyectos para ofrecer a tus clientes datos confiables.', img: '/images/Broker.jpg' }, { name: 'Proveedores', desc: 'Ofrecé tus servicios en el marketplace de Arqui y recibí pagos integrados con calificaciones verificadas.', img: '/images/Gardener.png' }],
+            people: [{ name: 'Constructores', desc: 'Asigná tareas, medí avances y llevá el registro de proveedores para que tu proyecto avance de manera óptima.', img: '/images/Constructor.png' }, { name: 'Desarrolladores', desc: 'Controlá cada etapa del desarrollo inmobiliario con datos en tiempo real y trazabilidad completa del proyecto.', img: '/images/Arquitect.png' }, { name: 'Inversores', desc: 'Accedé a oportunidades de inversión respaldadas por activos reales con transparencia total y rendimientos verificables.', img: '/images/Investor.jpg' }, { name: 'Administradores', desc: 'Gestioná edificios de forma eficiente con herramientas de monitoreo, mantenimiento preventivo y comunicación directa.', img: '/images/Administrator.png' }, { name: 'Residentes', desc: 'Viví una experiencia conectada: reservas, votaciones, reclamos y comunidad en un solo lugar.', img: '/images/Resident.png' }, { name: 'Compradores', desc: 'Seguí el avance real de tu futura propiedad y tomá decisiones informadas con datos verificados.', img: '/images/Buyer.png' }, { name: 'Brokers', desc: 'Accedé a información verificada de propiedades y proyectos para ofrecer a tus clientes datos confiables.', img: '/images/Broker.jpg' }, { name: 'Proveedores', desc: 'Ofrecé tus servicios en el marketplace de Arqy y recibí pagos integrados con calificaciones verificadas.', img: '/images/Gardener.png' }],
         },
         whyArqui: {
-            title: '¿Por qué elegir Arqui?', desc: 'Arqui no es solo una opción, es el nuevo estándar de la industria. Nuestra propuesta es única y no existe ninguna otra plataforma en el mercado capaz de unificar el ciclo de vida completo del real estate en un solo sistema operativo. Pasamos de gestionar tareas a gestionar la confianza.',
-            cards: [{ title: 'La Única Fuente de Verdad', desc: 'A diferencia de herramientas fragmentadas, Arqui conecta a todos los actores en un sistema de registro único donde la transparencia es automática, eliminando reportes manuales y datos subjetivos.' }, { title: 'Escalabilidad sin Precedentes', desc: 'Nuestra infraestructura operativa te permite triplicar tu capacidad de gestión de obras con la misma estructura administrativa, transformando el caos del crecimiento en una ventaja competitiva.' }, { title: 'Certificación Real de Valor', desc: 'Somos los únicos que transforman la gestión interna en un activo comercial, otorgando a cada unidad un historial técnico certificado que incrementa su valor de reventa y confianza del comprador.' }, { title: 'Continuidad Total del Activo', desc: 'Arqui es el único ecosistema que acompaña la propiedad desde la inversión inicial hasta décadas de operación comunitaria, protegiendo la memoria técnica y planos del edificio para siempre.' }, { title: 'Infraestructura de Capital Ágil', desc: 'Democratizamos el acceso al mercado mediante un loop económico tokenizado que garantiza seguridad al inversor y liquidez inmediata al desarrollador bajo el respaldo de activos reales.' }],
+            title: '¿Por qué elegir Arqy?', desc: 'Arqy no es solo una opción, es el nuevo estándar de la industria. Nuestra propuesta es única y no existe ninguna otra plataforma en el mercado capaz de unificar el ciclo de vida completo del real estate en un solo sistema operativo. Pasamos de gestionar tareas a gestionar la confianza.',
+            cards: [{ title: 'La Única Fuente de Verdad', desc: 'A diferencia de herramientas fragmentadas, Arqy conecta a todos los actores en un sistema de registro único donde la transparencia es automática, eliminando reportes manuales y datos subjetivos.' }, { title: 'Escalabilidad sin Precedentes', desc: 'Nuestra infraestructura operativa te permite triplicar tu capacidad de gestión de obras con la misma estructura administrativa, transformando el caos del crecimiento en una ventaja competitiva.' }, { title: 'Certificación Real de Valor', desc: 'Somos los únicos que transforman la gestión interna en un activo comercial, otorgando a cada unidad un historial técnico certificado que incrementa su valor de reventa y confianza del comprador.' }, { title: 'Continuidad Total del Activo', desc: 'Arqy es el único ecosistema que acompaña la propiedad desde la inversión inicial hasta décadas de operación comunitaria, protegiendo la memoria técnica y planos del edificio para siempre.' }, { title: 'Infraestructura de Capital Ágil', desc: 'Democratizamos el acceso al mercado mediante un loop económico tokenizado que garantiza seguridad al inversor y liquidez inmediata al desarrollador bajo el respaldo de activos reales.' }],
         },
         ecosystem: { title: 'El Ecosistema que lo Une Todo', desc: 'Cinco módulos interconectados que cubren el ciclo de vida completo del real estate.' },
         about: {
             tag: 'Sobre Nosotros', title: 'Quiénes somos', desc: 'Conocé al equipo detrás de la transformación digital del real estate', yearsExp: 'Años de experiencia', study: 'Estudio',
-            members: [{ role: 'Fundador', quote: '"Creamos Arqui porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' }, { role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqui es el sistema operativo que lo cambia todo."', study: 'Finanzas' }],
+            members: [{ role: 'Fundador', quote: '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' }, { role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."', study: 'Finanzas' }],
         },
         cta: {
-            title: 'El futuro del Real Estate no se espera, se construye.', desc: 'Profesionaliza cada etapa de tu negocio inmobiliario con la infraestructura digital más potente del mercado. Deja atrás la fragmentación y sé parte de la red Arqui.',
-            cta1: 'Unirse a Arqui', cta2: 'Hablar con un Experto',
+            title: 'El futuro del Real Estate no se espera, se construye.', desc: 'Profesionaliza cada etapa de tu negocio inmobiliario con la infraestructura digital más potente del mercado. Deja atrás la fragmentación y sé parte de la red Arqy.',
+            cta1: 'Hablar con un Experto', cta2: 'Ver Precios',
         },
         footer: {
-            brandDesc: 'Arqui es la infraestructura digital del ciclo de vida completo del activo inmobiliario. Conectamos a todos los actores de la cadena — inversores, constructoras, compradores, residentes y administradores — en una única fuente de verdad compartida.',
+            brandDesc: 'Arqy es la infraestructura digital del ciclo de vida completo del activo inmobiliario. Conectamos a todos los actores de la cadena — inversores, constructoras, compradores, residentes y administradores — en una única fuente de verdad compartida.',
             productCol: 'Producto', companyCol: 'Compañía', downloadsCol: 'Descargas', ourStory: 'Nuestra historia', blog: 'Blog', contact: 'Contacto',
-            copyright: '© 2026 Arqui. Todos los derechos reservados.', privacy: 'Política de privacidad', terms: 'Términos de servicio',
+            copyright: '© 2026 Arqy. Todos los derechos reservados.', privacy: 'Política de privacidad', terms: 'Términos de servicio',
         },
     },
     en: {
@@ -130,11 +134,11 @@ const TRANSLATIONS = {
         },
         build: {
             tag: 'Products', title1: 'The Turning Point: Where Chaos Becomes', titleHighlight: 'Growth',
-            desc: "Leave fragmentation behind and take control of your business. Arqui sets the new standard of trust: an architecture designed to professionalize construction execution, certify asset commercialization, streamline capital access, and elevate community living with intelligent administration. It's time to scale your vision with a systemic transparency the market has never seen. Ready for the next level?",
-            buildTitle: 'Arqui Build: Total Control', buildDesc: 'We digitize field and financial engineering. Real-time tracking of every task, cost, and deviation to ensure return on investment.',
+            desc: "Leave fragmentation behind and take control of your business. Arqy sets the new standard of trust: an architecture designed to professionalize construction execution, certify asset commercialization, streamline capital access, and elevate community living with intelligent administration. It's time to scale your vision with a systemic transparency the market has never seen. Ready for the next level?",
+            buildTitle: 'Arqy Build: Total Control', buildDesc: 'We digitize field and financial engineering. Real-time tracking of every task, cost, and deviation to ensure return on investment.',
             buildFeatures: ['Schedule synced with physical construction', 'Real-time financial deviation alerts', 'Budget vs. actual dashboard'],
             learnMore: 'Learn More', timelineTitle: 'Real-Time Sync: Your Project in Motion.',
-            timelineDesc: 'Overcome the uncertainty of traditional management. Arqui Build lets you visualize simultaneous tasks, detect bottlenecks before they happen, and ensure every team is aligned with the actual pace of execution.',
+            timelineDesc: 'Overcome the uncertainty of traditional management. Arqy Build lets you visualize simultaneous tasks, detect bottlenecks before they happen, and ensure every team is aligned with the actual pace of execution.',
             projectTimeline: 'Project timeline', teamLabel: 'Team:',
             weeks: ['Wk 1', 'Wk 2', 'Wk 3', 'Wk 4', 'Wk 5', 'Wk 6', 'Wk 7'],
             tasks: ['Earthworks', 'Foundation Slabs', 'Level 1 Structure', 'Plumbing Installations', 'Slab Pour'],
@@ -144,52 +148,52 @@ const TRANSLATIONS = {
             months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
         },
         state: {
-            title: 'Arqui State: Marketplace with Full Traceability.', desc: 'Verified units with real history. Buyers access construction evidence and legal status in a single click.',
-            learnMore: 'Learn More',
+            title: 'Arqy State: Marketplace with Full Traceability.', desc: 'Verified units with real history. Buyers access construction evidence and legal status in a single click.',
+            learnMore: 'Coming Soon',
             bullets: ['Pre-sale Transparency: Access real construction history and certified delivery schedules directly tied to physical progress on site.', 'Dynamic Inventory: Live availability for brokers and buyers, with the ability to digitally reserve units and instantly access all technical documentation.', 'Certified Evidence: View progress through historical photos and videos that guarantee material quality and structural processes before delivery.'],
         },
         home: {
             bubble1Title: 'HOA vote initiated', bubble2: '🙋 Hey neighbors, does anyone know what time the common room opens today?', bubble3: '🕘 Zoom scheduled for 9:15',
-            title: 'Arqui Home: Your Building is a Social Network.', desc: "Smart management for residents. Vote, book, and access your home's technical records — all from a single digital platform.",
-            features: ['Verified HOA Voting', 'Smart Amenity Booking', 'Remote Access to Technical Records'], learnMore: 'Learn More',
+            title: 'Arqy Home: Your Building is a Social Network.', desc: "Smart management for residents. Vote, book, and access your home's technical records — all from a single digital platform.",
+            features: ['Verified HOA Voting', 'Smart Amenity Booking', 'Remote Access to Technical Records'], learnMore: 'Coming Soon',
         },
         management: {
-            title: 'Arqui Management', desc: 'Smart building management. Coordinate vendors, manage expenses, and connect your team from one place with IoT and artificial intelligence.',
-            learnMore: 'Learn More', controlTitle: 'Your building, under control.',
+            title: 'Arqy Management', desc: 'Smart building management. Coordinate vendors, manage expenses, and connect your team from one place with IoT and artificial intelligence.',
+            learnMore: 'Coming Soon', controlTitle: 'Your building, under control.',
             controlDesc: "Maximize the property's useful life by monitoring vital systems. We detect anomalies before they become unexpected costs, reducing maintenance fees through technical efficiency and proactive preventive maintenance.",
             energyLabel: 'Energy efficiency:', elevatorAlert: '⚠️ Elevator A:', elevatorDesc: 'Urgent preventive maintenance required. Next scheduled service: March 10th',
-            marketplaceTitle: 'Service Provider Marketplace.', marketplaceDesc: 'Professionals and service providers can offer their skills directly within the Arqui ecosystem. Manage maintenance and cleaning tasks with integrated ARQY Token payments and verified ratings.',
+            marketplaceTitle: 'Service Provider Marketplace.', marketplaceDesc: 'Professionals and service providers can offer their skills directly within the Arqy ecosystem. Manage maintenance and cleaning tasks with integrated ARQY Token payments and verified ratings.',
             searchPlaceholder: 'Search for a service or provider...', services: ['Cleaning', 'Electrical Maint.', 'HVAC', 'Landscaping', 'Security', 'Transport', 'Plumbing', 'Painting', 'Locksmith'],
         },
         capital: {
-            title: 'Arqui Capital: The Investment Infrastructure', desc: 'Arqui Capital is the bridge connecting capital markets with real on-the-ground execution. We eliminate financial opacity through an investment system built on verifiable data, not promises.',
-            learnMore: 'Learn More', microTitle: 'Micro-Investment & Crowdfunding',
-            microDesc: "Through the ARQY Token, anyone can fund specific projects with minimum amounts. The real estate asset serves as real collateral, and Arqui Build's traceability ensures every dollar invested is reflected in the property's physical progress.",
+            title: 'Arqy Capital: The Investment Infrastructure', desc: 'Arqy Capital is the bridge connecting capital markets with real on-the-ground execution. We eliminate financial opacity through an investment system built on verifiable data, not promises.',
+            learnMore: 'Coming Soon', microTitle: 'Micro-Investment & Crowdfunding',
+            microDesc: "Through the ARQY Token, anyone can fund specific projects with minimum amounts. The real estate asset serves as real collateral, and Arqy Build's traceability ensures every dollar invested is reflected in the property's physical progress.",
             tokenTitle: 'The ARQY Token Economic Cycle', tokenDesc: "The token isn't just an investment vehicle — it's the exchange currency of the entire ecosystem. From micro-investments in Capital to payments for service providers in Property Management, ARQY creates an internal economic loop that digitally appreciates the real estate asset.",
         },
         personas: {
             tag: 'REAL USERS',
             title: 'Real People, Real Solutions.',
             subtitle: 'Developers, investors, administrators, residents, and buyers. Each with their own platform, all connected to the same asset.',
-            people: [{ name: 'Builders', desc: 'Assign tasks, track progress, and manage vendor records to keep your project moving forward optimally.', img: '/images/Constructor.png' }, { name: 'Developers', desc: 'Control every stage of real estate development with real-time data and full project traceability.', img: '/images/Arquitect.png' }, { name: 'Investors', desc: 'Access investment opportunities backed by real assets with full transparency and verifiable returns.', img: '/images/Investor.jpg' }, { name: 'Administrators', desc: 'Manage buildings efficiently with monitoring tools, preventive maintenance, and direct communication.', img: '/images/Administrator.png' }, { name: 'Residents', desc: 'Live a connected experience: bookings, votes, requests, and community — all in one place.', img: '/images/Resident.png' }, { name: 'Buyers', desc: 'Track the real progress of your future property and make informed decisions with verified data.', img: '/images/Buyer.png' }, { name: 'Brokers', desc: 'Access verified property and project data to provide your clients with reliable, trustworthy information.', img: '/images/Broker.jpg' }, { name: 'Providers', desc: 'Offer your services in the Arqui marketplace and receive integrated payments with verified ratings.', img: '/images/Gardener.png' }],
+            people: [{ name: 'Builders', desc: 'Assign tasks, track progress, and manage vendor records to keep your project moving forward optimally.', img: '/images/Constructor.png' }, { name: 'Developers', desc: 'Control every stage of real estate development with real-time data and full project traceability.', img: '/images/Arquitect.png' }, { name: 'Investors', desc: 'Access investment opportunities backed by real assets with full transparency and verifiable returns.', img: '/images/Investor.jpg' }, { name: 'Administrators', desc: 'Manage buildings efficiently with monitoring tools, preventive maintenance, and direct communication.', img: '/images/Administrator.png' }, { name: 'Residents', desc: 'Live a connected experience: bookings, votes, requests, and community — all in one place.', img: '/images/Resident.png' }, { name: 'Buyers', desc: 'Track the real progress of your future property and make informed decisions with verified data.', img: '/images/Buyer.png' }, { name: 'Brokers', desc: 'Access verified property and project data to provide your clients with reliable, trustworthy information.', img: '/images/Broker.jpg' }, { name: 'Providers', desc: 'Offer your services in the Arqy marketplace and receive integrated payments with verified ratings.', img: '/images/Gardener.png' }],
         },
         whyArqui: {
-            title: 'Why choose Arqui?', desc: "Arqui isn't just an option — it's the new industry standard. Our proposition is unique; no other platform on the market can unify the complete real estate lifecycle in a single operating system. We've moved from managing tasks to managing trust.",
-            cards: [{ title: 'The Single Source of Truth', desc: 'Unlike fragmented tools, Arqui connects all stakeholders in a unified record system where transparency is automatic, eliminating manual reports and subjective data.' }, { title: 'Unprecedented Scalability', desc: 'Our operational infrastructure lets you triple your project management capacity with the same administrative structure, turning growth chaos into a competitive advantage.' }, { title: 'Real Value Certification', desc: 'We are the only ones who transform internal management into a commercial asset, giving each unit a certified technical history that increases its resale value and buyer confidence.' }, { title: 'Full Asset Continuity', desc: 'Arqui is the only ecosystem that accompanies a property from the initial investment to decades of community operation, permanently protecting its technical records and building plans.' }, { title: 'Agile Capital Infrastructure', desc: 'We democratize market access through a tokenized economic loop that guarantees investor security and immediate liquidity to developers, backed by real assets.' }],
+            title: 'Why choose Arqy?', desc: "Arqy isn't just an option — it's the new industry standard. Our proposition is unique; no other platform on the market can unify the complete real estate lifecycle in a single operating system. We've moved from managing tasks to managing trust.",
+            cards: [{ title: 'The Single Source of Truth', desc: 'Unlike fragmented tools, Arqy connects all stakeholders in a unified record system where transparency is automatic, eliminating manual reports and subjective data.' }, { title: 'Unprecedented Scalability', desc: 'Our operational infrastructure lets you triple your project management capacity with the same administrative structure, turning growth chaos into a competitive advantage.' }, { title: 'Real Value Certification', desc: 'We are the only ones who transform internal management into a commercial asset, giving each unit a certified technical history that increases its resale value and buyer confidence.' }, { title: 'Full Asset Continuity', desc: 'Arqy is the only ecosystem that accompanies a property from the initial investment to decades of community operation, permanently protecting its technical records and building plans.' }, { title: 'Agile Capital Infrastructure', desc: 'We democratize market access through a tokenized economic loop that guarantees investor security and immediate liquidity to developers, backed by real assets.' }],
         },
         ecosystem: { title: 'The Ecosystem That Connects Everything', desc: 'Five interconnected modules covering the complete real estate lifecycle.' },
         about: {
             tag: 'About Us', title: 'Who We Are', desc: 'Meet the team behind the digital transformation of real estate', yearsExp: 'Years of experience', study: 'Studies',
-            members: [{ role: 'Co-Founder', quote: '"We built Arqui because real estate needed a digital infrastructure that connects capital, construction, and community into a single source of truth."', study: 'Finance' }, { role: 'Co-Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqui is the operating system that changes everything."', study: 'Finance' }],
+            members: [{ role: 'Co-Founder', quote: '"We built Arqy because real estate needed a digital infrastructure that connects capital, construction, and community into a single source of truth."', study: 'Finance' }, { role: 'Co-Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqy is the operating system that changes everything."', study: 'Finance' }],
         },
         cta: {
-            title: "The future of Real Estate isn't waited for — it's built.", desc: 'Professionalize every stage of your real estate business with the most powerful digital infrastructure on the market. Leave fragmentation behind and become part of the Arqui network.',
-            cta1: 'Join Arqui', cta2: 'Talk to an Expert',
+            title: "The future of Real Estate isn't waited for — it's built.", desc: 'Professionalize every stage of your real estate business with the most powerful digital infrastructure on the market. Leave fragmentation behind and become part of the Arqy network.',
+            cta1: 'Talk to an Expert', cta2: 'See Pricing',
         },
         footer: {
-            brandDesc: 'Arqui is the digital infrastructure for the complete lifecycle of real estate assets. We connect every stakeholder in the chain — investors, builders, buyers, residents, and administrators — in a single shared source of truth.',
+            brandDesc: 'Arqy is the digital infrastructure for the complete lifecycle of real estate assets. We connect every stakeholder in the chain — investors, builders, buyers, residents, and administrators — in a single shared source of truth.',
             productCol: 'Product', companyCol: 'Company', downloadsCol: 'Downloads', ourStory: 'Our Story', blog: 'Blog', contact: 'Contact',
-            copyright: '© 2026 Arqui. All rights reserved.', privacy: 'Privacy Policy', terms: 'Terms of Service',
+            copyright: '© 2026 Arqy. All rights reserved.', privacy: 'Privacy Policy', terms: 'Terms of Service',
         },
     },
 };
@@ -257,7 +261,7 @@ const Navbar = ({ lang, setLang }) => {
     const modules = [
         {
             id: 'build',
-            name: 'Arqui Build',
+            name: 'Arqy Build',
             tagline: lang === 'es' ? 'Control Total de Obra' : 'Total Construction Control',
             desc: lang === 'es' ? 'Digitaliza la ingeniería de campo y financiera con seguimiento en tiempo real.' : 'Digitize field and financial engineering with real-time tracking.',
             icon: Building2,
@@ -267,7 +271,7 @@ const Navbar = ({ lang, setLang }) => {
         },
         {
             id: 'state',
-            name: 'Arqui State',
+            name: 'Arqy State',
             tagline: lang === 'es' ? 'Marketplace con Trazabilidad' : 'Marketplace with Traceability',
             desc: lang === 'es' ? 'Unidades verificadas con historial real y evidencia certificada.' : 'Verified units with real history and certified evidence.',
             icon: Key,
@@ -277,7 +281,7 @@ const Navbar = ({ lang, setLang }) => {
         },
         {
             id: 'home',
-            name: 'Arqui Home',
+            name: 'Arqy Home',
             tagline: lang === 'es' ? 'Tu Edificio, Tu Red Social' : 'Your Building, Your Network',
             desc: lang === 'es' ? 'Gestión inteligente para residentes: votá, reservá y conectate.' : 'Smart management for residents: vote, book, and connect.',
             icon: Home,
@@ -287,7 +291,7 @@ const Navbar = ({ lang, setLang }) => {
         },
         {
             id: 'management',
-            name: 'Arqui Management',
+            name: 'Arqy Management',
             tagline: lang === 'es' ? 'Gestión Inteligente del Edificio' : 'Smart Building Management',
             desc: lang === 'es' ? 'Coordiná proveedores y monitoreá sistemas vitales con IoT.' : 'Coordinate vendors and monitor vital systems with IoT.',
             icon: Settings,
@@ -297,7 +301,7 @@ const Navbar = ({ lang, setLang }) => {
         },
         {
             id: 'capital',
-            name: 'Arqui Capital',
+            name: 'Arqy Capital',
             tagline: lang === 'es' ? 'Infraestructura de Inversión' : 'Investment Infrastructure',
             desc: lang === 'es' ? 'Conecta el mercado de capitales con la ejecución real en el terreno.' : 'Connect capital markets with real on-the-ground execution.',
             icon: Wallet,
@@ -320,7 +324,7 @@ const Navbar = ({ lang, setLang }) => {
                     <div className="flex items-center gap-3">
                         <img
                             src="/images/Imagotipo.png"
-                            alt="Arqui Logo"
+                            alt="Arqy Logo"
                             className="h-28 w-auto transition-transform hover:scale-105"
                         />
                     </div>
@@ -365,10 +369,10 @@ const Navbar = ({ lang, setLang }) => {
                             </motion.svg>
                             <span className={`absolute -bottom-1 left-0 h-0.5 bg-lebane transition-all duration-300 ${resourcesOpen ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                         </button>
-                        <a href="#pricing" className="hover:text-lebane transition-colors relative group">
+                        <Link to="/pricing" className="hover:text-lebane transition-colors relative group">
                             {t.pricing}
                             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lebane transition-all group-hover:w-full" />
-                        </a>
+                        </Link>
                     </div>
 
                     <div className="flex items-center gap-4">
@@ -415,7 +419,15 @@ const Navbar = ({ lang, setLang }) => {
                             {modules.map((mod) => {
                                 return (
                                     <div key={mod.id} className="p-6 flex flex-col">
-                                        {/* Module name — future link to module page */}
+                                        {/* Module name — links to module page */}
+                                        {mod.id === 'build' ? (
+                                            <Link
+                                                to="/build"
+                                                className="font-bold text-[17px] text-gray-900 mb-1 hover:text-lebane transition-all leading-tight inline-block hover:scale-[1.04] origin-left"
+                                            >
+                                                {mod.name}
+                                            </Link>
+                                        ) : (
                                         <a
                                             href="#"
                                             onClick={e => e.preventDefault()}
@@ -423,6 +435,7 @@ const Navbar = ({ lang, setLang }) => {
                                         >
                                             {mod.name}
                                         </a>
+                                        )}
 
                                         {/* Tagline */}
                                         <p className="text-[13px] font-semibold mb-3 leading-tight" style={{ color: mod.color }}>
@@ -496,7 +509,7 @@ const Navbar = ({ lang, setLang }) => {
                                 </p>
                                 {[
                                     { label: lang === 'es' ? 'Sobre Nosotros' : 'About Us', desc: lang === 'es' ? 'Conocé al equipo y nuestra misión' : 'Meet the team and our mission', icon: Users, color: '#0051FF', bg: '#EEF3FF' },
-                                    { label: lang === 'es' ? 'Casos de Éxito' : 'Success Cases', desc: lang === 'es' ? 'Cómo nuestros clientes crecen con Arqui' : 'How our clients grow with Arqui', icon: TrendingUp, color: '#10B981', bg: '#ECFDF5', comingSoon: true },
+                                    { label: lang === 'es' ? 'Casos de Éxito' : 'Success Cases', desc: lang === 'es' ? 'Cómo nuestros clientes crecen con Arqy' : 'How our clients grow with Arqy', icon: TrendingUp, color: '#10B981', bg: '#ECFDF5', comingSoon: true },
                                     { label: lang === 'es' ? 'Actualizaciones de la Plataforma' : 'Platform Updates', desc: lang === 'es' ? 'Novedades y mejoras del ecosistema' : 'Latest ecosystem news and improvements', icon: Activity, color: '#7B61FF', bg: '#F3F0FF' },
                                 ].map(({ label, desc, icon: Icon, color, bg, comingSoon }) => (
                                     <a
@@ -587,7 +600,7 @@ const Hero = () => {
             {/* Full Background Image */}
             <img
                 src="/images/High_Hero.png"
-                alt="Arqui Hero Background"
+                alt="Arqy Hero Background"
                 className="absolute inset-0 w-full h-full object-cover object-top select-none hero-bg-img"
                 loading="eager"
                 decoding="sync"
@@ -623,23 +636,23 @@ const Hero = () => {
                         <h1
                             className="font-black text-white tracking-tight mb-4 max-w-[557px]"
                             style={{
-                                fontSize: '54.4px',
-                                lineHeight: '96px',
+                                fontSize: 'clamp(32px, 8vw, 54.4px)',
+                                lineHeight: 'clamp(44px, 11vw, 96px)',
                                 fontWeight: '800',
                                 fontFamily: "'Plus Jakarta Sans', sans-serif"
                             }}
                         >
-                            <span className="whitespace-nowrap">{t.heading[0]}</span>
+                            <span className="lg:whitespace-nowrap">{t.heading[0]}</span>
                             <br />
-                            <span className="whitespace-nowrap">{t.heading[1]}</span>
+                            <span className="lg:whitespace-nowrap">{t.heading[1]}</span>
                         </h1>
 
                         {/* Description */}
                         <p
                             className="text-white max-w-[587px] mb-[26px]"
                             style={{
-                                fontSize: '19px',
-                                lineHeight: '32px',
+                                fontSize: 'clamp(15px, 4vw, 19px)',
+                                lineHeight: 'clamp(24px, 5.5vw, 32px)',
                                 fontWeight: '800',
                                 opacity: '0.8',
                                 fontFamily: "'Inter', sans-serif"
@@ -651,6 +664,7 @@ const Hero = () => {
                         {/* Actions */}
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-[23px]">
                             <button
+                                onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal'))}
                                 className="bg-[#20316d] text-white font-bold rounded-full transition-all hover:brightness-110 active:scale-95"
                                 style={{
                                     fontSize: '18px',
@@ -665,6 +679,7 @@ const Hero = () => {
                                 {t.cta1}
                             </button>
                             <button
+                                onClick={() => document.getElementById('build')?.scrollIntoView({ behavior: 'smooth' })}
                                 className="text-white font-bold rounded-full flex items-center justify-center gap-3 transition-all active:scale-95 group"
                                 style={{
                                     fontSize: '18px',
@@ -729,6 +744,38 @@ const ScrollColumn = ({ column, scrollY, sectionTop, index }) => {
     );
 };
 
+const PainCarouselRow = ({ column, direction, duration = 25 }) => {
+    const cards = column.cards;
+    // Duplicate cards for seamless loop
+    const doubled = [...cards, ...cards];
+    return (
+        <div className="overflow-hidden w-full">
+            <motion.div
+                className="flex gap-4"
+                animate={{ x: direction === 1 ? ['0%', '-50%'] : ['-50%', '0%'] }}
+                transition={{ x: { repeat: Infinity, repeatType: 'loop', duration, ease: 'linear' } }}
+                style={{ width: 'max-content' }}
+            >
+                {doubled.map((card, i) => (
+                    <div
+                        key={i}
+                        className="bg-white rounded-2xl p-5 border border-[#E5E7EB] shadow-sm flex-shrink-0"
+                        style={{ width: '260px' }}
+                    >
+                        {i % cards.length === 0 && (
+                            <div className="w-10 h-10 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB] flex items-center justify-center mb-3">
+                                {column.icon}
+                            </div>
+                        )}
+                        <h4 className="text-[15px] font-bold text-[#111827] mb-1.5 leading-tight">{card.title}</h4>
+                        <p className="text-[13px] text-[#6B7280] leading-relaxed">{card.desc}</p>
+                    </div>
+                ))}
+            </motion.div>
+        </div>
+    );
+};
+
 const PainPointsGrid = () => {
     const t = useT().pain;
     const sectionRef = useRef(null);
@@ -752,8 +799,8 @@ const PainPointsGrid = () => {
     }));
 
     return (
-        <section ref={sectionRef} className="py-28 px-6 bg-[#FBFBFE] overflow-hidden">
-            <div className="max-w-7xl mx-auto">
+        <section ref={sectionRef} className="py-28 bg-[#FBFBFE] overflow-hidden">
+            <div className="max-w-7xl mx-auto px-6">
                 <div className="text-center mb-16">
                     <h2 className="text-[32px] md:text-[48px] font-extrabold mb-6 text-[#111827] tracking-tight">
                         {t.heading1}
@@ -764,11 +811,25 @@ const PainPointsGrid = () => {
                         {t.desc}
                     </p>
                 </div>
-                <div className="flex gap-5">
-                    {painColumns.map((col, i) => (
-                        <ScrollColumn key={i} column={col} scrollY={scrollY} sectionTop={sectionTop} index={i} />
-                    ))}
-                </div>
+            </div>
+
+            {/* Desktop: vertical scroll columns */}
+            <div className="hidden lg:flex gap-5 max-w-7xl mx-auto px-6">
+                {painColumns.map((col, i) => (
+                    <ScrollColumn key={i} column={col} scrollY={scrollY} sectionTop={sectionTop} index={i} />
+                ))}
+            </div>
+
+            {/* Mobile/Tablet: horizontal auto-scrolling rows */}
+            <div className="lg:hidden flex flex-col gap-4">
+                {painColumns.map((col, i) => (
+                    <PainCarouselRow
+                        key={i}
+                        column={col}
+                        direction={i % 2 === 0 ? 1 : -1}
+                        duration={30 + i * 3}
+                    />
+                ))}
             </div>
         </section>
     );
@@ -794,12 +855,12 @@ const StateImageReveal = () => {
 
     return (
         // w-screen + left-1/2 -translate-x-1/2 on the outer container for full bleed
-        <div ref={containerRef} className="w-screen relative left-1/2 -translate-x-1/2 bg-white" style={{ height: '200vh' }}>
+        <div ref={containerRef} className="w-screen relative left-1/2 -translate-x-1/2 bg-white h-[120vh] lg:h-[200vh]">
             {/* Sticky wrapper — no width manipulation needed, parent is already full-width */}
             <div className="sticky top-0 overflow-hidden">
                 <motion.img
                     src="/images/Arqui_State.jpg"
-                    alt="Arqui State"
+                    alt="Arqy State"
                     className="w-full h-auto block select-none"
                     style={{ clipPath }}
                     loading="eager"
@@ -850,11 +911,58 @@ const BuildSection = () => {
             </div>
 
             {/* Top Section - Full Width Background Image with Right Content Card */}
-            <div className="w-screen relative left-1/2 -translate-x-1/2 mb-24">
-                {/* Background Image - defines height naturally */}
+            {/* Mobile/Tablet: content above image, stacked — matching State section style */}
+            <div className="lg:hidden mb-16">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="max-w-7xl mx-auto px-6 mb-12"
+                >
+                    <div className="w-12 h-1 bg-[#20316d] mb-8 rounded-full" />
+                    <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight text-text-primary">
+                        {t.buildTitle}
+                    </h2>
+                    <p className="text-lg text-text-secondary leading-relaxed mb-8" style={{ fontFamily: "'Inter', sans-serif" }}>
+                        {t.buildDesc}
+                    </p>
+                    <ul className="space-y-5 mb-8">
+                        {t.buildFeatures.map((item, i) => (
+                            <li key={i} className="flex items-start gap-4 text-base font-medium" style={{ color: '#374151', fontFamily: "'Inter', sans-serif" }}>
+                                <div className="w-6 h-6 bg-[#20316d]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <CheckCircle2 className="w-4 h-4 text-[#20316d]" />
+                                </div>
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+                    <Link to="/build">
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="px-8 py-4 bg-[#20316d] text-white font-semibold rounded-full hover:bg-[#162350] transition-colors text-base"
+                            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", boxShadow: '0 4px 14px rgba(32,49,109,0.25)' }}
+                        >
+                            {t.learnMore}
+                        </motion.button>
+                    </Link>
+                </motion.div>
+                <div className="-mx-6">
+                    <img
+                        src="/images/Edificio.png"
+                        alt="Arqy Build"
+                        className="w-full h-auto block select-none"
+                        style={{ imageRendering: 'high-quality', objectFit: 'cover' }}
+                        loading="eager"
+                    />
+                </div>
+            </div>
+
+            {/* Desktop: original overlay layout */}
+            <div className="hidden lg:block w-screen relative left-1/2 -translate-x-1/2 mb-24">
                 <img
                     src="/images/Edificio.png"
-                    alt="Arqui Build"
+                    alt="Arqy Build"
                     className="w-full h-auto block select-none"
                     style={{ imageRendering: 'high-quality', objectFit: 'cover', maxWidth: '100%' }}
                     loading="eager"
@@ -894,14 +1002,16 @@ const BuildSection = () => {
                         ))}
                     </ul>
 
-                    <motion.button
-                        whileHover={{ scale: 1.04 }}
-                        whileTap={{ scale: 0.96 }}
-                        className="px-8 py-4 text-white font-bold rounded-full text-base transition-all self-start"
-                        style={{ backgroundColor: '#20316d', fontFamily: "'Plus Jakarta Sans', sans-serif", boxShadow: '0 4px 14px rgba(32,49,109,0.25)' }}
-                    >
-                        {t.learnMore}
-                    </motion.button>
+                    <Link to="/build">
+                        <motion.button
+                            whileHover={{ scale: 1.04 }}
+                            whileTap={{ scale: 0.96 }}
+                            className="px-8 py-4 text-white font-bold rounded-full text-base transition-all self-start"
+                            style={{ backgroundColor: '#20316d', fontFamily: "'Plus Jakarta Sans', sans-serif", boxShadow: '0 4px 14px rgba(32,49,109,0.25)' }}
+                        >
+                            {t.learnMore}
+                        </motion.button>
+                    </Link>
                 </motion.div>
             </div>
 
@@ -1232,7 +1342,7 @@ const OrbitingEcosystem = () => {
     return (
         <div className="w-full flex items-center justify-center">
             <div
-                className="relative w-[380px] h-[380px] md:w-[450px] md:h-[450px] flex items-center justify-center"
+                className="relative w-[450px] h-[450px] flex items-center justify-center origin-center scale-[0.65] sm:scale-[0.85] md:scale-100"
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
             >
@@ -1252,7 +1362,7 @@ const OrbitingEcosystem = () => {
 
                 {/* Central Arqui Logo */}
                 <div className="w-24 h-24 bg-white rounded-[1.5rem] flex items-center justify-center z-10 relative shadow-2xl border-2 border-[#E5E7EB]">
-                    <img src="/images/Isotipo.png" alt="Arqui" className="w-16 h-16 object-contain" />
+                    <img src="/images/Isotipo.png" alt="Arqy" className="w-16 h-16 object-contain" />
                 </div>
 
                 {/* Orbiting module nodes */}
@@ -1264,6 +1374,7 @@ const OrbitingEcosystem = () => {
         </div>
     );
 };
+
 
 const AboutUsSection = () => {
     const t = useT().about;
@@ -1288,8 +1399,85 @@ const AboutUsSection = () => {
                     </p>
                 </div>
 
-                {/* Content Grid */}
-                <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+                {/* Mobile/Tablet Layout */}
+                <div className="lg:hidden">
+                    {/* Name tabs */}
+                    <div className="flex gap-4 mb-8">
+                        {TEAM_STATIC.map((s, i) => (
+                            <button
+                                key={i}
+                                onClick={() => setActiveIndex(i)}
+                                className={`px-4 py-2 rounded-full text-[14px] font-bold transition-all duration-300 ${i === activeIndex ? 'bg-[#20316d] text-white' : 'bg-gray-100 text-[#6B7280]'}`}
+                            >
+                                {s.name}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Top row: photo left (45%) + quote right (55%) */}
+                    <div className="flex gap-4 mb-6">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeIndex}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.4 }}
+                                className="w-[42%] flex-shrink-0 aspect-[3/4] rounded-xl overflow-hidden bg-[#E5E7EB]"
+                            >
+                                <img
+                                    src={staticData.img}
+                                    alt={staticData.name}
+                                    className="w-full h-full object-cover"
+                                />
+                            </motion.div>
+                        </AnimatePresence>
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeIndex}
+                                initial={{ opacity: 0, x: 10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -10 }}
+                                transition={{ duration: 0.4 }}
+                                className="bg-[#aebfff]/20 rounded-xl p-5 flex-1 flex items-center"
+                            >
+                                <p className="text-[16px] sm:text-[18px] font-semibold text-[#111827] leading-relaxed">
+                                    {member.quote}
+                                </p>
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
+
+                    {/* Bottom row: person info side by side */}
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeIndex}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.3, delay: 0.1 }}
+                            className="flex items-center gap-6"
+                        >
+                            <div>
+                                <h4 className="text-[18px] font-bold text-[#20316d]">{staticData.name}</h4>
+                                <p className="text-[13px] text-[#6B7280]">{member.role}</p>
+                            </div>
+                            <div className="w-px h-10 bg-[#E5E7EB]" />
+                            <div>
+                                <span className="text-[32px] font-extrabold text-[#111827] leading-none">{staticData.experience}</span>
+                                <p className="text-[12px] text-[#6B7280] mt-0.5">{t.yearsExp}</p>
+                            </div>
+                            <div className="w-px h-10 bg-[#E5E7EB]" />
+                            <div>
+                                <span className="text-[16px] font-bold text-[#111827]">{member.study}</span>
+                                <p className="text-[12px] text-[#6B7280] mt-0.5">{t.study}</p>
+                            </div>
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+
+                {/* Desktop Layout */}
+                <div className="hidden lg:flex flex-row gap-16 items-start">
                     {/* Left: Names List */}
                     <div className="lg:w-[280px] flex-shrink-0">
                         <div className="space-y-0">
@@ -1309,7 +1497,7 @@ const AboutUsSection = () => {
                     </div>
 
                     {/* Center: Photo */}
-                    <div className="flex-shrink-0 w-full lg:w-[380px]">
+                    <div className="flex-shrink-0 w-[380px]">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeIndex}
@@ -1365,12 +1553,12 @@ const AboutUsSection = () => {
                                 className="flex gap-12 mt-6"
                             >
                                 <div>
-                                    <span className="text-[40px] md:text-[48px] font-extrabold text-[#111827] leading-none">{staticData.experience}</span>
+                                    <span className="text-[48px] font-extrabold text-[#111827] leading-none">{staticData.experience}</span>
                                     <p className="text-[14px] text-[#6B7280] mt-1">{t.yearsExp}</p>
                                 </div>
                                 <div className="w-px bg-[#E5E7EB]" />
                                 <div>
-                                    <span className="text-[18px] md:text-[20px] font-bold text-[#111827] leading-tight block mt-2">{member.study}</span>
+                                    <span className="text-[20px] font-bold text-[#111827] leading-tight block mt-2">{member.study}</span>
                                     <p className="text-[14px] text-[#6B7280] mt-1">{t.study}</p>
                                 </div>
                             </motion.div>
@@ -1384,13 +1572,13 @@ const AboutUsSection = () => {
 
 const App = () => {
     const containerRef = useRef(null);
-    const [lang, setLang] = useState('es');
+    const { lang, setLang } = useLang();
     const t = TRANSLATIONS[lang];
 
     return (
         <LangContext.Provider value={lang}>
             <div className="min-h-screen bg-background text-text-primary selection:bg-lebane/10 selection:text-lebane overflow-x-clip">
-                <Navbar lang={lang} setLang={setLang} />
+                <SharedNavbar lang={lang} setLang={setLang} />
                 <Hero />
                 <PainPointsGrid />
                 <BuildSection />
@@ -1450,15 +1638,89 @@ const App = () => {
 
                 {/* Arqui Home: Community App Section */}
                 <section id="comunidad" className="pt-24 pb-32 bg-white relative overflow-hidden">
-                    <div className="flex flex-col lg:flex-row items-center">
-                        <div className="lg:w-1/2 relative order-2 lg:order-1 overflow-hidden">
+                    {/* Mobile/Tablet: full-width text above, then full-width image */}
+                    <div className="lg:hidden">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                            className="max-w-7xl mx-auto px-6 mb-12"
+                        >
+                            <div className="w-12 h-1 bg-[#20316d] mb-8 rounded-full" />
+                            <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight text-text-primary">
+                                {t.home.title}
+                            </h2>
+                            <p className="text-lg text-text-secondary leading-relaxed mb-8">
+                                {t.home.desc}
+                            </p>
+                            <ul className="space-y-5 mb-8">
+                                {t.home.features.map((item, i) => (
+                                    <li key={i} className="flex items-center gap-4 text-base font-medium">
+                                        <div className="w-6 h-6 bg-[#20316d]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                            <CheckCircle2 className="w-4 h-4 text-[#20316d]" />
+                                        </div>
+                                        <span className="text-text-secondary">{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="px-8 py-4 bg-[#20316d] text-white font-semibold rounded-full hover:bg-[#162350] transition-colors"
+                            >
+                                {t.home.learnMore}
+                            </motion.button>
+                        </motion.div>
+                        <div className="relative">
+                            <img src="/images/Arqui_home.png" alt="Arqy Home" className="w-full h-auto" />
+                            {/* Bubble: Votacion consorcio */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.4 }}
+                                className="bubble-float-1 absolute top-1 left-[3%] bg-white px-1.5 py-1.5 sm:px-4 sm:py-3.5 rounded-md sm:rounded-xl shadow-md sm:shadow-lg border border-gray-100 max-w-[100px] sm:max-w-[200px]"
+                            >
+                                <p className="text-[7px] sm:text-[12px] font-bold text-text-primary mb-0.5 sm:mb-2">{t.home.bubble1Title}</p>
+                                <div className="space-y-0 sm:space-y-1">
+                                    {['María González', 'Carlos Ruiz', 'Ana Martínez'].map(name => (
+                                        <div key={name} className="flex items-center gap-0.5 sm:gap-2 text-[6px] sm:text-[11px] text-text-secondary">
+                                            <CheckCircle2 className="w-2 h-2 sm:w-3 sm:h-3 text-green-500 flex-shrink-0" />
+                                            <span>{name}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </motion.div>
+                            {/* Bubble: Hola vecinos */}
+                            <motion.div
+                                initial={{ opacity: 0, x: 10 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.7 }}
+                                className="bubble-float-2 absolute top-1/2 -translate-y-1/2 right-[2%] bg-white px-1.5 py-1.5 sm:px-3 sm:py-3 rounded-md sm:rounded-xl shadow-md sm:shadow-lg border border-gray-100 max-w-[85px] sm:max-w-[180px]"
+                            >
+                                <p className="text-[6px] sm:text-[12px] font-semibold text-text-primary leading-snug">{t.home.bubble2}</p>
+                            </motion.div>
+                            {/* Bubble: Zoom reservado */}
+                            <motion.div
+                                initial={{ opacity: 0, y: -10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 1.0 }}
+                                className="bubble-float-3 absolute bottom-1 left-[3%] bg-primary px-1.5 py-1.5 sm:px-3 sm:py-3 rounded-md sm:rounded-xl shadow-md sm:shadow-lg max-w-[100px] sm:max-w-[200px]"
+                            >
+                                <p className="text-[6px] sm:text-[12px] font-bold text-white leading-snug">{t.home.bubble3}</p>
+                            </motion.div>
+                        </div>
+                    </div>
+
+                    {/* Desktop: original side-by-side layout */}
+                    <div className="hidden lg:flex flex-row items-center gap-0">
+                        <div className="lg:w-1/2 relative overflow-hidden">
                             <motion.div
                                 initial={{ x: -80, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
                                 transition={{ duration: 0.7, ease: 'easeOut' }}
                                 className="relative"
                             >
-                                <img src="/images/Arqui_home.png" alt="Arqui Home" className="w-full h-auto" />
+                                <img src="/images/Arqui_home.png" alt="Arqy Home" className="w-full h-auto" />
 
                                 {/* Bubble: Votacion consorcio - arriba izquierda */}
                                 <motion.div
@@ -1510,7 +1772,7 @@ const App = () => {
                             </motion.div>
                         </div>
 
-                        <div className="lg:w-1/2 order-1 lg:order-2 px-12 lg:pl-20 lg:pr-32">
+                        <div className="lg:w-1/2 px-6 md:px-12 lg:pl-20 lg:pr-32">
                             <div className="max-w-[550px]">
                                 <div className="w-12 h-1 bg-[#20316d] mb-8 rounded-full" />
                                 <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight text-text-primary">
@@ -1546,12 +1808,43 @@ const App = () => {
 
                 {/* Arqui Management: Hero Banner */}
                 <section className="pt-24 pb-20 bg-white relative overflow-hidden">
-                    <div className="flex flex-col lg:flex-row items-center">
-                        {/* Left: Text content — left edge aligned with max-w-7xl px-6 below */}
-                        <div className="lg:w-1/2 order-1 pr-12" style={{ paddingLeft: 'max(1.5rem, calc(50vw - 40rem))' }}>
+                    {/* Mobile/Tablet: full-width text above, then full-width image */}
+                    <div className="lg:hidden">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                            className="max-w-7xl mx-auto px-6 mb-12"
+                        >
+                            <div className="w-12 h-1 bg-[#20316d] mb-8 rounded-full" />
+                            <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight text-[#111827]">
+                                {t.management.title}
+                            </h2>
+                            <p className="text-lg text-[#6B7280] leading-relaxed mb-8">
+                                {t.management.desc}
+                            </p>
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="px-8 py-4 bg-[#20316d] text-white font-semibold rounded-full hover:bg-[#162350] transition-colors"
+                            >
+                                {t.management.learnMore}
+                            </motion.button>
+                        </motion.div>
+                        <img
+                            src="/images/Arqui_Managment.png"
+                            alt="Arqy Management"
+                            className="w-full h-auto"
+                        />
+                    </div>
+
+                    {/* Desktop: original side-by-side layout */}
+                    <div className="hidden lg:flex flex-row items-center gap-0">
+                        {/* Left: Text content */}
+                        <div className="lg:w-1/2 px-6 lg:pr-12" style={{ paddingLeft: 'max(1.5rem, calc(50vw - 40rem))' }}>
                             <div className="max-w-[480px]">
                                 <div className="w-12 h-1 bg-[#20316d] mb-8 rounded-full" />
-                                <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight text-[#111827]">
+                                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6 leading-tight text-[#111827]">
                                     {t.management.title}
                                 </h2>
                                 <p className="text-lg text-[#6B7280] leading-relaxed mb-8">
@@ -1571,10 +1864,10 @@ const App = () => {
                         </div>
 
                         {/* Right: Image touching right edge */}
-                        <div className="lg:w-1/2 order-2 overflow-hidden">
+                        <div className="lg:w-1/2 overflow-hidden">
                             <motion.img
                                 src="/images/Arqui_Managment.png"
-                                alt="Arqui Management"
+                                alt="Arqy Management"
                                 initial={{ x: 80, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
                                 transition={{ duration: 0.7, ease: 'easeOut' }}
@@ -1609,31 +1902,25 @@ const App = () => {
                                     />
 
                                     {/* Blue info card - right side, connected to building */}
-                                    <div className="absolute top-[20%] right-2 z-10 bubble-float-1">
+                                    <div className="absolute top-[20%] right-1 sm:right-2 z-10 bubble-float-1">
                                         <div className="flex items-center">
-                                            {/* Connector dot on building */}
-                                            <div className="w-3 h-3 rounded-full bg-primary border-2 border-white shadow-lg flex-shrink-0" />
-                                            {/* Connector line */}
-                                            <div className="w-8 h-[2px] bg-primary flex-shrink-0" />
-                                            {/* Card */}
-                                            <div className="bg-primary rounded-xl px-4 py-3 shadow-lg">
-                                                <p className="text-white text-xs font-bold leading-tight">{t.management.energyLabel}</p>
-                                                <p className="text-white text-sm font-black">+12% este mes</p>
+                                            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-primary border-2 border-white shadow-lg flex-shrink-0" />
+                                            <div className="w-4 sm:w-8 h-[2px] bg-primary flex-shrink-0" />
+                                            <div className="bg-primary rounded-lg sm:rounded-xl px-2 py-1.5 sm:px-4 sm:py-3 shadow-lg">
+                                                <p className="text-white text-[7px] sm:text-xs font-bold leading-tight">{t.management.energyLabel}</p>
+                                                <p className="text-white text-[8px] sm:text-sm font-black">+12% este mes</p>
                                             </div>
                                         </div>
                                     </div>
 
                                     {/* Red alert card - left side */}
-                                    <div className="absolute top-[55%] left-2 z-10 bubble-float-2">
+                                    <div className="absolute top-[55%] left-1 sm:left-2 z-10 bubble-float-2">
                                         <div className="flex items-center flex-row-reverse">
-                                            {/* Connector dot on building */}
-                                            <div className="w-3 h-3 rounded-full bg-red-500 border-2 border-white shadow-lg flex-shrink-0" />
-                                            {/* Connector line */}
-                                            <div className="w-8 h-[2px] bg-red-500 flex-shrink-0" />
-                                            {/* Card */}
-                                            <div className="bg-red-500 rounded-xl px-4 py-3 shadow-lg max-w-[210px]">
-                                                <p className="text-white text-xs font-bold leading-tight">{t.management.elevatorAlert}</p>
-                                                <p className="text-white text-[11px] leading-tight mt-1">{t.management.elevatorDesc}</p>
+                                            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-500 border-2 border-white shadow-lg flex-shrink-0" />
+                                            <div className="w-4 sm:w-8 h-[2px] bg-red-500 flex-shrink-0" />
+                                            <div className="bg-red-500 rounded-lg sm:rounded-xl px-2 py-1.5 sm:px-4 sm:py-3 shadow-lg max-w-[130px] sm:max-w-[210px]">
+                                                <p className="text-white text-[7px] sm:text-xs font-bold leading-tight">{t.management.elevatorAlert}</p>
+                                                <p className="text-white text-[6px] sm:text-[11px] leading-tight mt-0.5 sm:mt-1">{t.management.elevatorDesc}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1716,13 +2003,13 @@ const App = () => {
                     </div>
 
                     {/* Full-width image + cards overlay */}
-                    <div className="relative w-full mt-8">
+                    {/* Desktop: overlay cards on image */}
+                    <div className="hidden lg:block relative w-full mt-8">
                         <img
                             src="/images/Capital.png"
-                            alt="Arqui Capital"
+                            alt="Arqy Capital"
                             className="w-full h-auto block"
                         />
-                        {/* Cards on the right, flush to edge */}
                         <div className="absolute inset-0 flex items-center justify-end">
                             <div className="flex flex-col gap-6 w-full max-w-2xl">
                                 <motion.div
@@ -1752,6 +2039,43 @@ const App = () => {
                                     </p>
                                 </motion.div>
                             </div>
+                        </div>
+                    </div>
+
+                    {/* Mobile/Tablet: full-width image then cards side by side */}
+                    <div className="lg:hidden mt-8 -mx-6">
+                        <img
+                            src="/images/Capital.png"
+                            alt="Arqy Capital"
+                            className="w-full h-auto block mb-8"
+                        />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-6">
+                            <motion.div
+                                initial={{ y: 30, opacity: 0 }}
+                                whileInView={{ y: 0, opacity: 1 }}
+                                className="bg-white p-6 rounded-2xl border border-gray-100 shadow-premium"
+                            >
+                                <h3 className="text-xl md:text-2xl font-black mb-3 leading-tight text-text-primary">
+                                    {t.capital.microTitle}
+                                </h3>
+                                <p className="text-sm text-text-secondary leading-relaxed">
+                                    {t.capital.microDesc}
+                                </p>
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ y: 30, opacity: 0 }}
+                                whileInView={{ y: 0, opacity: 1 }}
+                                transition={{ delay: 0.15 }}
+                                className="bg-white p-6 rounded-2xl border border-gray-100 shadow-premium"
+                            >
+                                <h3 className="text-xl md:text-2xl font-black mb-3 leading-tight text-text-primary">
+                                    {t.capital.tokenTitle}
+                                </h3>
+                                <p className="text-sm text-text-secondary leading-relaxed">
+                                    {t.capital.tokenDesc}
+                                </p>
+                            </motion.div>
                         </div>
                     </div>
                 </section>
@@ -1856,147 +2180,61 @@ const App = () => {
                 <AboutUsSection />
 
                 {/* CTA Final */}
-                <section className="py-20 bg-white">
-                    <div className="w-full relative overflow-hidden">
-                        {/* Background Image */}
-                        <img
-                            src="/images/CTA_Home.png"
-                            alt=""
-                            className="absolute inset-0 w-full h-full object-cover select-none"
-                        />
+                <section className="py-28 relative overflow-hidden"
+                    style={{ background: 'linear-gradient(135deg, #20316d 0%, #0d0da9 100%)' }}>
+                    <motion.div
+                        className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full opacity-20"
+                        style={{ background: '#7B61FF', filter: 'blur(100px)' }}
+                        animate={{ x: [0, 40, 0], y: [0, 30, 0] }}
+                        transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+                    />
+                    <motion.div
+                        className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full opacity-15"
+                        style={{ background: '#aebfff', filter: 'blur(100px)' }}
+                        animate={{ x: [0, -40, 0], y: [0, -30, 0] }}
+                        transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
+                    />
 
-                        {/* Content */}
-                        <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-20">
-                            <h2
-                                className="font-extrabold text-white tracking-tight mb-6 max-w-[600px]"
-                                style={{ fontSize: '42px', lineHeight: '52px' }}
-                            >
+                    <div className="relative max-w-3xl mx-auto px-6 text-center">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                        >
+                            <h2 className="text-white text-[32px] md:text-[48px] font-extrabold leading-[1.12] mb-5">
                                 {t.cta.title}
                             </h2>
-
-                            <p
-                                className="text-white font-medium max-w-[580px] mb-10"
-                                style={{ fontSize: '18px', lineHeight: '30px' }}
-                            >
+                            <p className="text-white/65 text-[17px] mb-10">
                                 {t.cta.desc}
                             </p>
 
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-[23px]">
-                                <button
-                                    className="bg-[#20316d] text-white font-bold rounded-full transition-all hover:brightness-110 active:scale-95"
-                                    style={{
-                                        fontSize: '18px',
-                                        fontWeight: '700',
-                                        lineHeight: '28px',
-                                        width: '238px',
-                                        height: '76px',
-                                        boxShadow: '0px 4px 6px -4px rgba(13, 13, 169, 0.20), 0px 10px 15px -3px rgba(13, 13, 169, 0.20)'
-                                    }}
+                            <div className="flex flex-wrap justify-center gap-4">
+                                <motion.a
+                                    href="#"
+                                    onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('open-contact-modal')); }}
+                                    className="inline-flex items-center gap-2 bg-white font-bold px-8 py-4 rounded-full hover:bg-white/90 transition-colors duration-200"
+                                    style={{ color: '#20316d' }}
+                                    whileHover={{ scale: 1.04 }}
+                                    whileTap={{ scale: 0.96 }}
                                 >
-                                    {t.cta.cta1}
-                                </button>
-                                <button
-                                    className="bg-white/10 backdrop-blur-[6px] text-white font-bold rounded-full border border-[#E5E7EB] flex items-center justify-center gap-3 transition-all hover:bg-white/20 active:scale-95"
-                                    style={{
-                                        fontSize: '18px',
-                                        fontWeight: '700',
-                                        lineHeight: '28px',
-                                        width: '260px',
-                                        height: '78px'
-                                    }}
+                                    {t.cta.cta1} <ArrowRight size={16} />
+                                </motion.a>
+                                <motion.a
+                                    href="/pricing"
+                                    className="inline-flex items-center gap-2 bg-white/10 border border-white/25 text-white font-bold px-8 py-4 rounded-full hover:bg-white/20 transition-colors duration-200"
+                                    whileHover={{ scale: 1.04 }}
+                                    whileTap={{ scale: 0.96 }}
                                 >
                                     {t.cta.cta2}
-                                </button>
+                                </motion.a>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </section>
 
                 {/* Footer */}
-                <footer className="bg-[#0a0f1e] text-white pt-20 pb-8 px-6">
-                    <div className="max-w-7xl mx-auto">
-                        {/* Top grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 pb-14 border-b border-white/10">
-
-                            {/* Brand column */}
-                            <div className="flex flex-col gap-6">
-                                <img
-                                    src="/images/Imagotipo_White.png"
-                                    alt="Arqui Logo"
-                                    className="h-9 w-36"
-                                />
-                                <p className="text-white/60 text-[15px] leading-relaxed max-w-[340px]">
-                                    {t.footer.brandDesc}
-                                </p>
-                                {/* Social icons */}
-                                <div className="flex items-center gap-4 mt-1">
-                                    {/* LinkedIn */}
-                                    <a href="#" aria-label="LinkedIn" className="opacity-70 hover:opacity-100 transition-opacity" style={{ color: '#0A66C2' }}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
-                                        </svg>
-                                    </a>
-                                    {/* Instagram */}
-                                    <a href="#" aria-label="Instagram" className="opacity-70 hover:opacity-100 transition-opacity" style={{ color: '#E1306C' }}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                                        </svg>
-                                    </a>
-                                    {/* X (Twitter) */}
-                                    <a href="#" aria-label="X" className="opacity-70 hover:opacity-100 transition-opacity text-white">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                                        </svg>
-                                    </a>
-                                    {/* YouTube */}
-                                    <a href="#" aria-label="YouTube" className="opacity-70 hover:opacity-100 transition-opacity" style={{ color: '#FF0000' }}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-
-                            {/* Columna 1 — Producto */}
-                            <div className="flex flex-col gap-4">
-                                <span className="text-white/30 text-[11px] font-bold uppercase tracking-widest mb-1">{t.footer.productCol}</span>
-                                <a href="#" className="text-white/60 hover:text-white transition-colors text-[15px]">Arqui Build</a>
-                                <a href="#" className="text-white/60 hover:text-white transition-colors text-[15px]">Arqui State</a>
-                                <a href="#" className="text-white/60 hover:text-white transition-colors text-[15px]">Arqui Home</a>
-                                <a href="#" className="text-white/60 hover:text-white transition-colors text-[15px]">Arqui Management</a>
-                                <a href="#" className="text-white/60 hover:text-white transition-colors text-[15px]">Arqui Capital</a>
-                            </div>
-
-                            {/* Columna 2 — Compañía */}
-                            <div className="flex flex-col gap-4">
-                                <span className="text-white/30 text-[11px] font-bold uppercase tracking-widest mb-1">{t.footer.companyCol}</span>
-                                <a href="#" className="text-white/60 hover:text-white transition-colors text-[15px]">{t.footer.ourStory}</a>
-                                <a href="#" className="text-white/60 hover:text-white transition-colors text-[15px]">{t.footer.blog}</a>
-                                <a href="#" className="text-white/60 hover:text-white transition-colors text-[15px]">{t.footer.contact}</a>
-                            </div>
-
-                            {/* Columna 3 — Descargas */}
-                            <div className="flex flex-col gap-4">
-                                <span className="text-white/30 text-[11px] font-bold uppercase tracking-widest mb-1">{t.footer.downloadsCol}</span>
-                                <a href="#" className="flex items-center gap-2 text-white/60 hover:text-white transition-colors text-[15px]">
-                                    <span>🍎</span> Apple App Store
-                                </a>
-                                <a href="#" className="flex items-center gap-2 text-white/60 hover:text-white transition-colors text-[15px]">
-                                    <span>▶</span> Google Play
-                                </a>
-                            </div>
-                        </div>
-
-                        {/* Bottom bar */}
-                        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-[13px] text-white/30">
-                            <span>{t.footer.copyright}</span>
-                            <div className="flex items-center gap-6">
-                                <a href="#" className="hover:text-white/60 transition-colors">{t.footer.privacy}</a>
-                                <a href="#" className="hover:text-white/60 transition-colors">{t.footer.terms}</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                <SharedFooter lang={lang} />
             </div>
         </LangContext.Provider>
     );
