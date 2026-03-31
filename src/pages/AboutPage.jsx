@@ -53,6 +53,8 @@ const PAGE_T = {
             chip:  'EL EQUIPO',
             h1:    ['El equipo detrás del', 'sistema operativo del real estate'],
             desc:  'Somos un equipo de fundadores que vio de cerca el caos de la industria y decidió construir la infraestructura que siempre faltó.',
+            btn1: 'Hablar con un Experto',
+            btn2: 'Explora el Ecosistema',
         },
         manifesto: {
             eyebrow: 'POR QUÉ EXISTIMOS',
@@ -97,6 +99,8 @@ const PAGE_T = {
             chip:  'THE TEAM',
             h1:    ['The team behind the', 'real estate operating system'],
             desc:  'We are a team of founders who saw the chaos of the industry up close and decided to build the infrastructure that was always missing.',
+            btn1: 'Talk to an Expert',
+            btn2: 'Explore the Ecosystem',
         },
         manifesto: {
             eyebrow: 'WHY WE EXIST',
@@ -241,14 +245,14 @@ function AboutHero({ lang }) {
                                 className="px-8 py-4 bg-[#20316d] text-white font-bold rounded-full text-[16px] transition-all hover:brightness-110 active:scale-95 whitespace-nowrap"
                                 style={{ boxShadow: '0 4px 14px rgba(32,49,109,0.25)' }}
                             >
-                                Hablar con un Experto
+                                {t.btn1}
                             </button>
                             <Link
                                 to="/#build"
                                 className="px-8 py-4 text-white font-bold rounded-full text-[16px] transition-all active:scale-95 whitespace-nowrap"
                                 style={{ background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', border: '1px solid rgba(255,255,255,0.4)' }}
                             >
-                                Explora el Ecosistema
+                                {t.btn2}
                             </Link>
                         </div>
                     </motion.div>
