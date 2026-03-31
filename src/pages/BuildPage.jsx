@@ -171,7 +171,7 @@ function BuildHero({ lang }) {
             {/* Background image with parallax */}
             <motion.div className="absolute inset-0 z-0" style={{ y: imgY }}>
                 <img
-                    src="/images/ArqyBuild_Hero.jpg"
+                    src="/images/ArqyBuild_Hero.webp"
                     alt="Edificio en construcción"
                     className="w-full h-full object-cover object-center scale-110"
                 />
@@ -448,7 +448,7 @@ const MODULE_CARDS = [
         bgColor: '#F0FDF4',
         span: 1,
         link: '/sales',
-        heroImg: '/images/ArquiSales_Hero.jpeg',
+        heroImg: '/images/ArquiSales_Hero.webp',
     },
     {
         icon: LayoutDashboard,
@@ -458,7 +458,7 @@ const MODULE_CARDS = [
         bgColor: '#EEF3FF',
         span: 1,
         link: '/project-management',
-        heroImg: '/images/PM_Hero.jpeg',
+        heroImg: '/images/PM_Hero.webp',
     },
     {
         icon: Package,
@@ -468,7 +468,7 @@ const MODULE_CARDS = [
         bgColor: '#FFFBEB',
         span: 1,
         link: '/procurement',
-        heroImg: '/images/Procurement_Hero.jpeg',
+        heroImg: '/images/Procurement_Hero.webp',
     },
     {
         icon: Users,
@@ -478,7 +478,7 @@ const MODULE_CARDS = [
         bgColor: '#F5F3FF',
         span: 2,
         link: '/team-management',
-        heroImg: '/images/Team_Hero.jpeg',
+        heroImg: '/images/Team_Hero.webp',
     },
     {
         icon: DollarSign,
@@ -488,7 +488,7 @@ const MODULE_CARDS = [
         bgColor: '#FEF2F2',
         span: 1,
         link: '/finance',
-        heroImg: '/images/Finance_Hero.jpeg',
+        heroImg: '/images/Finance_Hero.webp',
     },
     {
         icon: FolderOpen,
@@ -498,7 +498,7 @@ const MODULE_CARDS = [
         bgColor: '#EEF3FF',
         span: 1,
         link: '/document-management',
-        heroImg: '/images/Docs_Hero.jpeg',
+        heroImg: '/images/Docs_Hero.webp',
     },
     {
         icon: BarChart3,
@@ -508,7 +508,7 @@ const MODULE_CARDS = [
         bgColor: '#EEF0F8',
         span: 2,
         link: '/analytics',
-        heroImg: '/images/Analytics_Hero.jpeg',
+        heroImg: '/images/Analytics_Hero.webp',
     },
 ];
 
@@ -756,21 +756,21 @@ const ACTORS = [
         chip: 'Constructoras',
         title: 'Control total de cada obra.',
         desc: 'Desvíos detectados a tiempo. Materiales con trazabilidad. Contratistas coordinados. El dueño con visión real del negocio sin esperar el reporte mensual.',
-        img: '/images/Actor_Constructora.jpeg',
+        img: '/images/Actor_Constructora.webp',
         icon: Building2,
     },
     {
         chip: 'Estudios de Arquitectura',
         title: 'Del diseño al cierre, sin fricción.',
         desc: 'Del primer lead hasta el proyecto cerrado financieramente. Presupuesto, documentos y equipo en un solo lugar. Sin Excel, sin duplicación.',
-        img: '/images/Actor_Arquitecta.jpeg',
+        img: '/images/Actor_Arquitecta.webp',
         icon: HardHat,
     },
     {
         chip: 'Contratistas Especializados',
         title: 'Tu trabajo, sin el caos.',
         desc: 'Pedí materiales desde la app en vez del WhatsApp. Reportá desde obra con fotos y videos. Recibí pagos con historial completo. Sin reuniones innecesarias.',
-        img: '/images/Actor_Contratista.jpeg',
+        img: '/images/Actor_Contratista.webp',
         icon: Wrench,
     },
 ];
@@ -991,12 +991,12 @@ function EcosystemSection({ lang }) {
 
 // ─── About Us ─────────────────────────────────────────────────────────────────
 const TEAM_ES = [
-    { name: 'Juan Devera',   experience: '10', img: '/images/Juan_devera_ceo.jpeg',  role: 'Fundador', quote: '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' },
-    { name: 'Luciano Reca',  experience: '7',  img: '/images/Luciano_Reca.jpeg',     role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."', study: 'Finanzas' },
+    { name: 'Juan Devera',   experience: '10', img: '/images/Juan_devera_ceo.webp',  role: 'Fundador', quote: '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' },
+    { name: 'Luciano Reca',  experience: '7',  img: '/images/Luciano_Reca.webp',     role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."', study: 'Finanzas' },
 ];
 const TEAM_EN = [
-    { name: 'Juan Devera',   experience: '10', img: '/images/Juan_devera_ceo.jpeg',  role: 'Founder', quote: '"We created Arqy because real estate needed a digital infrastructure that connects capital, construction and community into a single source of truth."', study: 'Finance' },
-    { name: 'Luciano Reca',  experience: '7',  img: '/images/Luciano_Reca.jpeg',     role: 'Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqy is the operating system that changes everything."', study: 'Finance' },
+    { name: 'Juan Devera',   experience: '10', img: '/images/Juan_devera_ceo.webp',  role: 'Founder', quote: '"We created Arqy because real estate needed a digital infrastructure that connects capital, construction and community into a single source of truth."', study: 'Finance' },
+    { name: 'Luciano Reca',  experience: '7',  img: '/images/Luciano_Reca.webp',     role: 'Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqy is the operating system that changes everything."', study: 'Finance' },
 ];
 
 

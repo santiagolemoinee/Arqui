@@ -184,7 +184,7 @@ function DocumentHero({ lang }) {
         <section ref={ref} className="relative w-full h-screen min-h-[700px] overflow-hidden flex items-center">
             <motion.div className="absolute inset-0 z-0" style={{ y: imgY }}>
                 <img
-                    src="/images/Docs_Hero.jpeg"
+                    src="/images/Docs_Hero.webp"
                     alt="Arquitecto revisando documentos de obra"
                     className="w-full h-full object-cover object-center scale-110"
                 />
@@ -719,32 +719,32 @@ const SOLUTIONS = [
     {
         title: 'Repositorio por proyecto',
         desc: 'Todos los documentos de cada obra en un solo lugar. Planos, contratos, permisos y fotos organizados por proyecto y categoría.',
-        img: '/images/Docs_repositorio.jpeg',
+        img: '/images/Docs_repositorio.webp',
     },
     {
         title: 'Control de versiones',
         desc: 'Cada archivo mantiene su historial completo. Siempre sabés cuál es la versión vigente, quién la subió y cuándo.',
-        img: '/images/Docs_versiones.jpeg',
+        img: '/images/Docs_versiones.webp',
     },
     {
         title: 'Búsqueda inteligente',
         desc: 'Encontrá cualquier documento en segundos. Filtrá por nombre, proyecto, tipo, fecha o responsable.',
-        img: '/images/Docs_busqueda.jpeg',
+        img: '/images/Docs_busqueda.webp',
     },
     {
         title: 'Control de accesos',
         desc: 'Definí quién puede ver, editar o descargar cada documento. Accesos por rol, por obra o por tipo de archivo.',
-        img: '/images/Docs_accesos.jpeg',
+        img: '/images/Docs_accesos.webp',
     },
     {
         title: 'Documentos vinculados a tareas',
         desc: 'Adjuntá planos y specs directamente a las tareas de obra. El equipo tiene el documento correcto sin buscarlo.',
-        img: '/images/Docs_tareas.jpeg',
+        img: '/images/Docs_tareas.webp',
     },
     {
         title: 'Alertas de vencimiento',
         desc: 'Certificados, seguros y permisos con fechas de vencimiento automáticamente monitoreados. Cero renovaciones perdidas.',
-        img: '/images/Docs_alertas.jpeg',
+        img: '/images/Docs_alertas.webp',
     },
 ];
 
@@ -991,17 +991,17 @@ const ACTORS = [
     {
         chip: 'Director / Dueño',
         desc: 'Control total: qué documentos existen, quién los tiene y cuáles están por vencer. Sin depender de que alguien te mande el archivo.',
-        img: '/images/Actor_Director.jpeg',
+        img: '/images/Actor_Director.webp',
     },
     {
         chip: 'Arquitecto / Jefe de Obra',
         desc: 'Planos actualizados, contratos y permisos en un clic. Desde el celular en obra, sin llamar a la oficina.',
-        img: '/images/Actor_Arquitecta.jpeg',
+        img: '/images/Actor_Arquitecta.webp',
     },
     {
         chip: 'Capataz / Operario',
         desc: 'El plano del día, disponible desde el celular. Sin llamadas para conseguir la versión correcta.',
-        img: '/images/Actor_Capataz.jpeg',
+        img: '/images/Actor_Capataz.webp',
     },
 ];
 
@@ -1210,12 +1210,12 @@ function EcosystemSection({ lang }) {
 
 // ─── About Us ─────────────────────────────────────────────────────────────────
 const TEAM_ES = [
-    { name: 'Juan Devera',   experience: '10', img: '/images/Juan_devera_ceo.jpeg',  role: 'Fundador', quote: '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' },
-    { name: 'Luciano Reca',  experience: '7',  img: '/images/Luciano_Reca.jpeg',     role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."', study: 'Finanzas' },
+    { name: 'Juan Devera',   experience: '10', img: '/images/Juan_devera_ceo.webp',  role: 'Fundador', quote: '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' },
+    { name: 'Luciano Reca',  experience: '7',  img: '/images/Luciano_Reca.webp',     role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."', study: 'Finanzas' },
 ];
 const TEAM_EN = [
-    { name: 'Juan Devera',   experience: '10', img: '/images/Juan_devera_ceo.jpeg',  role: 'Founder', quote: '"We created Arqy because real estate needed a digital infrastructure that connects capital, construction and community into a single source of truth."', study: 'Finance' },
-    { name: 'Luciano Reca',  experience: '7',  img: '/images/Luciano_Reca.jpeg',     role: 'Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqy is the operating system that changes everything."', study: 'Finance' },
+    { name: 'Juan Devera',   experience: '10', img: '/images/Juan_devera_ceo.webp',  role: 'Founder', quote: '"We created Arqy because real estate needed a digital infrastructure that connects capital, construction and community into a single source of truth."', study: 'Finance' },
+    { name: 'Luciano Reca',  experience: '7',  img: '/images/Luciano_Reca.webp',     role: 'Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqy is the operating system that changes everything."', study: 'Finance' },
 ];
 
 

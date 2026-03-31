@@ -101,7 +101,7 @@ export default function ContactPage() {
             <section className="relative w-full h-screen min-h-[700px] overflow-hidden flex items-center">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/images/Contact_Hero.jpeg"
+                        src="/images/Contact_Hero.webp"
                         alt="Contact"
                         className="w-full h-full object-cover object-center"
                     />

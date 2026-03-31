@@ -94,7 +94,7 @@ const TRANSLATIONS = {
             tag: 'USUARIOS REALES',
             title: 'Personas Reales, Soluciones Reales.',
             subtitle: 'Desarrolladores, inversores, administradores, residentes y compradores. Cada uno con su plataforma, todos conectados al mismo activo.',
-            people: [{ name: 'Constructores', desc: 'Asigná tareas, medí avances y llevá el registro de proveedores para que tu proyecto avance de manera óptima.', img: '/images/Constructor.png' }, { name: 'Desarrolladores', desc: 'Controlá cada etapa del desarrollo inmobiliario con datos en tiempo real y trazabilidad completa del proyecto.', img: '/images/Arquitect.png' }, { name: 'Inversores', desc: 'Accedé a oportunidades de inversión respaldadas por activos reales con transparencia total y rendimientos verificables.', img: '/images/Investor.jpg' }, { name: 'Administradores', desc: 'Gestioná edificios de forma eficiente con herramientas de monitoreo, mantenimiento preventivo y comunicación directa.', img: '/images/Administrator.png' }, { name: 'Residentes', desc: 'Viví una experiencia conectada: reservas, votaciones, reclamos y comunidad en un solo lugar.', img: '/images/Resident.png' }, { name: 'Compradores', desc: 'Seguí el avance real de tu futura propiedad y tomá decisiones informadas con datos verificados.', img: '/images/Buyer.png' }, { name: 'Brokers', desc: 'Accedé a información verificada de propiedades y proyectos para ofrecer a tus clientes datos confiables.', img: '/images/Broker.jpg' }, { name: 'Proveedores', desc: 'Ofrecé tus servicios en el marketplace de Arqy y recibí pagos integrados con calificaciones verificadas.', img: '/images/Gardener.png' }],
+            people: [{ name: 'Constructores', desc: 'Asigná tareas, medí avances y llevá el registro de proveedores para que tu proyecto avance de manera óptima.', img: '/images/Constructor.webp' }, { name: 'Desarrolladores', desc: 'Controlá cada etapa del desarrollo inmobiliario con datos en tiempo real y trazabilidad completa del proyecto.', img: '/images/Arquitect.webp' }, { name: 'Inversores', desc: 'Accedé a oportunidades de inversión respaldadas por activos reales con transparencia total y rendimientos verificables.', img: '/images/Investor.webp' }, { name: 'Administradores', desc: 'Gestioná edificios de forma eficiente con herramientas de monitoreo, mantenimiento preventivo y comunicación directa.', img: '/images/Administrator.webp' }, { name: 'Residentes', desc: 'Viví una experiencia conectada: reservas, votaciones, reclamos y comunidad en un solo lugar.', img: '/images/Resident.webp' }, { name: 'Compradores', desc: 'Seguí el avance real de tu futura propiedad y tomá decisiones informadas con datos verificados.', img: '/images/Buyer.webp' }, { name: 'Brokers', desc: 'Accedé a información verificada de propiedades y proyectos para ofrecer a tus clientes datos confiables.', img: '/images/Broker.webp' }, { name: 'Proveedores', desc: 'Ofrecé tus servicios en el marketplace de Arqy y recibí pagos integrados con calificaciones verificadas.', img: '/images/Gardener.webp' }],
         },
         whyArqui: {
             title: '¿Por qué elegir Arqy?', desc: 'Arqy no es solo una opción, es el nuevo estándar de la industria. Nuestra propuesta es única y no existe ninguna otra plataforma en el mercado capaz de unificar el ciclo de vida completo del real estate en un solo sistema operativo. Pasamos de gestionar tareas a gestionar la confianza.',
@@ -175,7 +175,7 @@ const TRANSLATIONS = {
             tag: 'REAL USERS',
             title: 'Real People, Real Solutions.',
             subtitle: 'Developers, investors, administrators, residents, and buyers. Each with their own platform, all connected to the same asset.',
-            people: [{ name: 'Builders', desc: 'Assign tasks, track progress, and manage vendor records to keep your project moving forward optimally.', img: '/images/Constructor.png' }, { name: 'Developers', desc: 'Control every stage of real estate development with real-time data and full project traceability.', img: '/images/Arquitect.png' }, { name: 'Investors', desc: 'Access investment opportunities backed by real assets with full transparency and verifiable returns.', img: '/images/Investor.jpg' }, { name: 'Administrators', desc: 'Manage buildings efficiently with monitoring tools, preventive maintenance, and direct communication.', img: '/images/Administrator.png' }, { name: 'Residents', desc: 'Live a connected experience: bookings, votes, requests, and community — all in one place.', img: '/images/Resident.png' }, { name: 'Buyers', desc: 'Track the real progress of your future property and make informed decisions with verified data.', img: '/images/Buyer.png' }, { name: 'Brokers', desc: 'Access verified property and project data to provide your clients with reliable, trustworthy information.', img: '/images/Broker.jpg' }, { name: 'Providers', desc: 'Offer your services in the Arqy marketplace and receive integrated payments with verified ratings.', img: '/images/Gardener.png' }],
+            people: [{ name: 'Builders', desc: 'Assign tasks, track progress, and manage vendor records to keep your project moving forward optimally.', img: '/images/Constructor.webp' }, { name: 'Developers', desc: 'Control every stage of real estate development with real-time data and full project traceability.', img: '/images/Arquitect.webp' }, { name: 'Investors', desc: 'Access investment opportunities backed by real assets with full transparency and verifiable returns.', img: '/images/Investor.webp' }, { name: 'Administrators', desc: 'Manage buildings efficiently with monitoring tools, preventive maintenance, and direct communication.', img: '/images/Administrator.webp' }, { name: 'Residents', desc: 'Live a connected experience: bookings, votes, requests, and community — all in one place.', img: '/images/Resident.webp' }, { name: 'Buyers', desc: 'Track the real progress of your future property and make informed decisions with verified data.', img: '/images/Buyer.webp' }, { name: 'Brokers', desc: 'Access verified property and project data to provide your clients with reliable, trustworthy information.', img: '/images/Broker.webp' }, { name: 'Providers', desc: 'Offer your services in the Arqy marketplace and receive integrated payments with verified ratings.', img: '/images/Gardener.webp' }],
         },
         whyArqui: {
             title: 'Why choose Arqy?', desc: "Arqy isn't just an option — it's the new industry standard. Our proposition is unique; no other platform on the market can unify the complete real estate lifecycle in a single operating system. We've moved from managing tasks to managing trust.",
@@ -209,8 +209,8 @@ const PAIN_ICONS = [
 ];
 
 const TEAM_STATIC = [
-    { name: 'Juan Devera', experience: '10', img: '/images/Juan_devera_ceo.jpeg' },
-    { name: 'Luciano Reca', experience: '7', img: '/images/Luciano_Reca.jpeg' },
+    { name: 'Juan Devera', experience: '10', img: '/images/Juan_devera_ceo.webp' },
+    { name: 'Luciano Reca', experience: '7', img: '/images/Luciano_Reca.webp' },
 ];
 
 const Navbar = ({ lang, setLang }) => {
@@ -599,7 +599,7 @@ const Hero = () => {
         <section className="relative w-full overflow-hidden" style={{ minHeight: '145vh' }}>
             {/* Full Background Image */}
             <img
-                src="/images/High_Hero.png"
+                src="/images/High_Hero.webp"
                 alt="Arqy Hero Background"
                 className="absolute inset-0 w-full h-full object-cover object-top select-none hero-bg-img"
                 loading="eager"
@@ -859,7 +859,7 @@ const StateImageReveal = () => {
             {/* Sticky wrapper — no width manipulation needed, parent is already full-width */}
             <div className="sticky top-0 overflow-hidden">
                 <motion.img
-                    src="/images/Arqui_State.jpg"
+                    src="/images/Arqui_State.webp"
                     alt="Arqy State"
                     className="w-full h-auto block select-none"
                     style={{ clipPath }}
@@ -949,7 +949,7 @@ const BuildSection = () => {
                 </motion.div>
                 <div className="-mx-6">
                     <img
-                        src="/images/Edificio.png"
+                        src="/images/Edificio.webp"
                         alt="Arqy Build"
                         className="w-full h-auto block select-none"
                         style={{ imageRendering: 'high-quality', objectFit: 'cover' }}
@@ -961,7 +961,7 @@ const BuildSection = () => {
             {/* Desktop: original overlay layout */}
             <div className="hidden lg:block w-screen relative left-1/2 -translate-x-1/2 mb-24">
                 <img
-                    src="/images/Edificio.png"
+                    src="/images/Edificio.webp"
                     alt="Arqy Build"
                     className="w-full h-auto block select-none"
                     style={{ imageRendering: 'high-quality', objectFit: 'cover', maxWidth: '100%' }}
@@ -1832,7 +1832,7 @@ const App = () => {
                             </motion.button>
                         </motion.div>
                         <img
-                            src="/images/Arqui_Managment.png"
+                            src="/images/Arqui_Managment.webp"
                             alt="Arqy Management"
                             className="w-full h-auto"
                         />
@@ -1866,7 +1866,7 @@ const App = () => {
                         {/* Right: Image touching right edge */}
                         <div className="lg:w-1/2 overflow-hidden">
                             <motion.img
-                                src="/images/Arqui_Managment.png"
+                                src="/images/Arqui_Managment.webp"
                                 alt="Arqy Management"
                                 initial={{ x: 80, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
@@ -1896,7 +1896,7 @@ const App = () => {
                                 </div>
                                 <div className="relative flex-1 flex items-end mt-6 overflow-hidden">
                                     <img
-                                        src="/images/Propery_Managment.png"
+                                        src="/images/Propery_Managment.webp"
                                         alt="Property Management"
                                         className="w-full block"
                                     />

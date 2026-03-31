@@ -233,7 +233,7 @@ function SalesHero({ lang }) {
             {/* Background image with parallax */}
             <motion.div className="absolute inset-0 z-0" style={{ y: imgY }}>
                 <img
-                    src="/images/ArquiSales_Hero.jpeg"
+                    src="/images/ArquiSales_Hero.webp"
                     alt="Ejecutivo de ventas revisando pipeline"
                     className="w-full h-full object-cover object-center scale-110"
                 />
@@ -596,32 +596,32 @@ const SOLUTIONS = [
     {
         title: 'Pipeline visual',
         desc: 'Tablero kanban con etapas configurables. Arrastrá oportunidades entre etapas, filtrá por responsable, fecha o valor estimado.',
-        img: '/images/Sales_pipeline.jpeg',
+        img: '/images/Sales_pipeline.webp',
     },
     {
         title: 'Gestión de leads y contactos',
         desc: 'Todos tus contactos en un solo lugar con historial completo de cada interacción, sin perder ningún dato en emails o WhatsApp.',
-        img: '/images/Sales_leads.jpeg',
+        img: '/images/Sales_leads.webp',
     },
     {
         title: 'Historial de comunicaciones',
         desc: 'Cada llamada, reunión y email queda registrado por oportunidad. El equipo ve todo el contexto antes de contactar al cliente.',
-        img: '/images/Sales_comunicaciones.jpeg',
+        img: '/images/Sales_comunicaciones.webp',
     },
     {
         title: 'Documentos por oportunidad',
         desc: 'Planos, propuestas y contratos en un solo lugar. Sin versiones perdidas, sin carpetas de Drive desorganizadas.',
-        img: '/images/Sales_documentos.jpeg',
+        img: '/images/Sales_documentos.webp',
     },
     {
         title: 'Conversión automática a proyecto',
         desc: 'Cuando el cliente acepta, el proyecto se crea automáticamente con todos los datos ya cargados. Cero duplicación.',
-        img: '/images/Sales_conversion.jpeg',
+        img: '/images/Sales_conversion.webp',
     },
     {
         title: 'CRM integrado',
         desc: 'Clientes vinculados a sus oportunidades y proyectos. Historial completo desde el primer contacto hasta el cierre financiero.',
-        img: '/images/Sales_crm.jpeg',
+        img: '/images/Sales_crm.webp',
     },
 ];
 
@@ -876,19 +876,19 @@ const ACTORS = [
     {
         chip: 'Director Comercial',
         desc: 'Visibilidad total del pipeline sin armar reportes. Sabé cuánto vale la cartera activa, qué oportunidades están en riesgo y cuántos leads hay en cada etapa.',
-        img: '/images/Actor_DirectorComercial.jpeg',
+        img: '/images/Actor_DirectorComercial.webp',
         icon: Building2,
     },
     {
         chip: 'Arquitecto / Jefe de Ventas',
         desc: 'Del primer contacto hasta la firma. Presupuestá, hacé seguimiento y convertí en proyecto en un clic. Sin Excel, sin duplicación.',
-        img: '/images/Actor_Arquitecta.jpeg',
+        img: '/images/Actor_Arquitecta.webp',
         icon: HardHat,
     },
     {
         chip: 'Asistente Comercial',
         desc: 'Registrá cada llamada, reunión y email en segundos. El equipo tiene contexto completo antes de cada contacto sin buscar en WhatsApp.',
-        img: '/images/Actor_AsistenteComercial.jpeg',
+        img: '/images/Actor_AsistenteComercial.webp',
         icon: Wrench,
     },
 ];
@@ -1106,12 +1106,12 @@ function EcosystemSection({ lang }) {
 
 // ─── About Us ─────────────────────────────────────────────────────────────────
 const TEAM_ES = [
-    { name: 'Juan Devera',   experience: '10', img: '/images/Juan_devera_ceo.jpeg',  role: 'Fundador', quote: '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' },
-    { name: 'Luciano Reca',  experience: '7',  img: '/images/Luciano_Reca.jpeg',     role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."', study: 'Finanzas' },
+    { name: 'Juan Devera',   experience: '10', img: '/images/Juan_devera_ceo.webp',  role: 'Fundador', quote: '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' },
+    { name: 'Luciano Reca',  experience: '7',  img: '/images/Luciano_Reca.webp',     role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."', study: 'Finanzas' },
 ];
 const TEAM_EN = [
-    { name: 'Juan Devera',   experience: '10', img: '/images/Juan_devera_ceo.jpeg',  role: 'Founder', quote: '"We created Arqy because real estate needed a digital infrastructure that connects capital, construction and community into a single source of truth."', study: 'Finance' },
-    { name: 'Luciano Reca',  experience: '7',  img: '/images/Luciano_Reca.jpeg',     role: 'Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqy is the operating system that changes everything."', study: 'Finance' },
+    { name: 'Juan Devera',   experience: '10', img: '/images/Juan_devera_ceo.webp',  role: 'Founder', quote: '"We created Arqy because real estate needed a digital infrastructure that connects capital, construction and community into a single source of truth."', study: 'Finance' },
+    { name: 'Luciano Reca',  experience: '7',  img: '/images/Luciano_Reca.webp',     role: 'Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqy is the operating system that changes everything."', study: 'Finance' },
 ];
 
 

@@ -169,7 +169,7 @@ function TeamHero({ lang }) {
         <section ref={ref} className="relative w-full h-screen min-h-[700px] overflow-hidden flex items-center">
             <motion.div className="absolute inset-0 z-0" style={{ y: imgY }}>
                 <img
-                    src="/images/Team_Hero.jpeg"
+                    src="/images/Team_Hero.webp"
                     alt="Líder de equipo coordinando en obra"
                     className="w-full h-full object-cover object-center scale-110"
                 />
@@ -652,27 +652,27 @@ const SOLUTIONS = [
     {
         title: 'Asignación de tareas',
         desc: 'Cada tarea tiene un responsable, una fecha y un estado. El capataz sabe exactamente qué tiene que hacer hoy, sin llamadas ni reuniones.',
-        img: '/images/Team_asignaciones.jpeg',
+        img: '/images/Team_asignaciones.webp',
     },
     {
         title: 'Cronograma de equipo',
         desc: 'Visualizá la carga de trabajo de cada persona por semana. Redistribuí tareas antes de que alguien quede sobrecargado.',
-        img: '/images/Team_cronograma.jpeg',
+        img: '/images/Team_cronograma.webp',
     },
     {
         title: 'Seguimiento de avance',
         desc: 'Cada miembro reporta avance desde la obra. Vos ves el progreso real sin esperar el parte del día.',
-        img: '/images/Team_avance.jpeg',
+        img: '/images/Team_avance.webp',
     },
     {
         title: 'Comunicación centralizada',
         desc: 'Los mensajes, archivos y actualizaciones de cada tarea en un solo lugar. Sin perder nada en WhatsApp.',
-        img: '/images/Team_comunicacion.jpeg',
+        img: '/images/Team_comunicacion.webp',
     },
     {
         title: 'Roles y permisos',
         desc: 'Cada usuario ve y puede hacer lo que le corresponde. Sin accesos innecesarios, sin datos expuestos.',
-        img: '/images/Team_permisos.jpeg',
+        img: '/images/Team_permisos.webp',
     },
 ];
 
@@ -919,17 +919,17 @@ const ACTORS = [
     {
         chip: 'Director de Obra',
         desc: 'Visibilidad total de quién trabaja en qué, en qué semana y con qué avance. Sin esperar el reporte del lunes.',
-        img: '/images/Actor_Director.jpeg',
+        img: '/images/Actor_Director.webp',
     },
     {
         chip: 'Arquitecto / Jefe',
         desc: 'Cronograma asignado, equipo coordinado y tareas con responsable claro. Liderá sin estar en la obra todo el día.',
-        img: '/images/Actor_Arquitecta.jpeg',
+        img: '/images/Actor_Arquitecta.webp',
     },
     {
         chip: 'Capataz / Operario',
         desc: 'Sabé exactamente qué tenés que hacer hoy. Reportá avance en segundos. Sin reuniones, sin confusión.',
-        img: '/images/Actor_Capataz.jpeg',
+        img: '/images/Actor_Capataz.webp',
     },
 ];
 
@@ -1138,12 +1138,12 @@ function EcosystemSection({ lang }) {
 
 // ─── About Us ─────────────────────────────────────────────────────────────────
 const TEAM_MEMBERS_ES = [
-    { name: 'Juan Devera',   experience: '10', img: '/images/Juan_devera_ceo.jpeg',  role: 'Fundador', quote: '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' },
-    { name: 'Luciano Reca',  experience: '7',  img: '/images/Luciano_Reca.jpeg',     role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."', study: 'Finanzas' },
+    { name: 'Juan Devera',   experience: '10', img: '/images/Juan_devera_ceo.webp',  role: 'Fundador', quote: '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' },
+    { name: 'Luciano Reca',  experience: '7',  img: '/images/Luciano_Reca.webp',     role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."', study: 'Finanzas' },
 ];
 const TEAM_MEMBERS_EN = [
-    { name: 'Juan Devera',   experience: '10', img: '/images/Juan_devera_ceo.jpeg',  role: 'Founder', quote: '"We created Arqy because real estate needed a digital infrastructure that connects capital, construction and community into a single source of truth."', study: 'Finance' },
-    { name: 'Luciano Reca',  experience: '7',  img: '/images/Luciano_Reca.jpeg',     role: 'Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqy is the operating system that changes everything."', study: 'Finance' },
+    { name: 'Juan Devera',   experience: '10', img: '/images/Juan_devera_ceo.webp',  role: 'Founder', quote: '"We created Arqy because real estate needed a digital infrastructure that connects capital, construction and community into a single source of truth."', study: 'Finance' },
+    { name: 'Luciano Reca',  experience: '7',  img: '/images/Luciano_Reca.webp',     role: 'Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqy is the operating system that changes everything."', study: 'Finance' },
 ];
 
 

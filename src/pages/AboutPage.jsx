@@ -19,14 +19,14 @@ const FOUNDERS = [
         name:    'Juan Devera',
         role:    'Fundador & CEO',
         bg:      'Finanzas',
-        img:     '/images/Juan_devera_ceo.jpeg',
+        img:     '/images/Juan_devera_ceo.webp',
         quote:   '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."',
     },
     {
         name:    'Luciano Reca',
         role:    'Co-Fundador',
         bg:      'Finanzas',
-        img:     '/images/Luciano_Reca.jpeg',
+        img:     '/images/Luciano_Reca.webp',
         quote:   '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."',
     },
 ];
@@ -161,7 +161,7 @@ function AboutHero({ lang }) {
         <section className="relative w-full overflow-hidden" style={{ minHeight: '145vh' }}>
             {/* Background image — identical to home */}
             <img
-                src="/images/High_Hero.png"
+                src="/images/High_Hero.webp"
                 alt="Arqy Hero Background"
                 className="absolute inset-0 w-full h-full object-cover object-top select-none hero-bg-img"
                 loading="eager"
@@ -318,7 +318,7 @@ function Manifesto({ lang }) {
 const IMPACT_BLOCKS = {
     es: [
         {
-            img: '/images/about_city_aerial.jpeg',
+            img: '/images/about_city_aerial.webp',
             imgRight: false,
             headline: 'Transformamos el real estate con infraestructura digital',
             desc: 'Desarrollamos e iteramos nuestra plataforma sin parar para cubrir las necesidades actuales y futuras de la industria. Desde gestión de obra en tiempo real hasta trazabilidad de capital e inteligencia comunitaria, nunca paramos de construir.',
@@ -329,7 +329,7 @@ const IMPACT_BLOCKS = {
             link: { label: 'Conocer la plataforma', href: '/build' },
         },
         {
-            img: '/images/about_people_building.jpeg',
+            img: '/images/about_people_building.webp',
             imgRight: true,
             headline: 'Mejoramos la vida de todos en el ecosistema inmobiliario',
             desc: 'El real estate afecta a millones de personas: inversores, constructores, compradores y residentes. Arqy existe para que cada actor del ciclo tenga las herramientas que merece.',
@@ -343,7 +343,7 @@ const IMPACT_BLOCKS = {
     ],
     en: [
         {
-            img: '/images/about_city_aerial.jpeg',
+            img: '/images/about_city_aerial.webp',
             imgRight: false,
             headline: 'We transform real estate with digital infrastructure',
             desc: 'We develop and iterate our platform non-stop to meet the current and future needs of the industry. From real-time construction management to capital traceability and community intelligence.',
@@ -354,7 +354,7 @@ const IMPACT_BLOCKS = {
             link: { label: 'Explore the platform', href: '/build' },
         },
         {
-            img: '/images/about_people_building.jpeg',
+            img: '/images/about_people_building.webp',
             imgRight: true,
             headline: 'We improve the lives of everyone in the real estate ecosystem',
             desc: 'Real estate affects millions: investors, builders, buyers and residents. Arqy exists so every actor in the cycle has the tools they deserve.',
@@ -516,7 +516,7 @@ function OurStory({ lang }) {
                     >
                         <div className="relative overflow-hidden aspect-[4/3]">
                             <img
-                                src="/images/Juan_Lucho.png"
+                                src="/images/Juan_Lucho.webp"
                                 alt="Juan Devera y Luciano Reca"
                                 className="w-full h-full object-cover"
                             />

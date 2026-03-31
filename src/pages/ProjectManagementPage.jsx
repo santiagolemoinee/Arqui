@@ -230,7 +230,7 @@ function PMHero({ lang }) {
         <section ref={ref} className="relative w-full h-screen min-h-[700px] overflow-hidden flex items-center">
             <motion.div className="absolute inset-0 z-0" style={{ y: imgY }}>
                 <img
-                    src="/images/PM_Hero.jpeg"
+                    src="/images/PM_Hero.webp"
                     alt="Project manager revisando planos de obra"
                     className="w-full h-full object-cover object-center scale-110"
                 />
@@ -604,32 +604,32 @@ const SOLUTIONS = [
     {
         title: 'Cronograma de obra',
         desc: 'Visualizá el plan completo: tareas, hitos y dependencias. Identificá en segundos qué está demorado y qué impacta la fecha de entrega.',
-        img: '/images/PM_cronograma.jpeg',
+        img: '/images/PM_cronograma.webp',
     },
     {
         title: 'Control presupuestario',
         desc: 'Presupuesto vs real por categoría en tiempo real. El desvío aparece antes de que sea un problema, no cuando ya no hay nada que hacer.',
-        img: '/images/PM_presupuesto.jpeg',
+        img: '/images/PM_presupuesto.webp',
     },
     {
         title: 'Seguimiento de tareas',
         desc: 'Cada tarea tiene responsable, fecha y estado. El equipo actualiza desde obra. Vos ves el avance sin hacer una sola llamada.',
-        img: '/images/PM_tareas.jpeg',
+        img: '/images/PM_tareas.webp',
     },
     {
         title: 'Reportes automáticos',
         desc: 'El dashboard se alimenta solo. El dueño ve el estado real del negocio sin esperar que alguien arme el reporte del mes.',
-        img: '/images/PM_reportes.jpeg',
+        img: '/images/PM_reportes.webp',
     },
     {
         title: 'Gestión de subcontratistas',
         desc: 'Asignaciones, avance y pagos de cada subcontratista en un solo lugar. Sin Excel, sin WhatsApp, sin "te mando el parte mañana".',
-        img: '/images/PM_subcontratistas.jpeg',
+        img: '/images/PM_subcontratistas.webp',
     },
     {
         title: 'Documentos por proyecto',
         desc: 'Planos, especificaciones y actas con versiones controladas. El equipo encuentra lo que necesita en segundos, desde cualquier lugar.',
-        img: '/images/PM_documentos.jpeg',
+        img: '/images/PM_documentos.webp',
     },
 ];
 
@@ -886,19 +886,19 @@ const ACTORS = [
     {
         chip: 'Director de Obra',
         desc: 'Visibilidad total del avance sin pisar la obra. Desvíos detectados a tiempo. Presupuesto vs real actualizado. El dueño con datos reales del negocio.',
-        img: '/images/Actor_Director.jpeg',
+        img: '/images/Actor_Director.webp',
         icon: Building2,
     },
     {
         chip: 'Jefe de Proyecto',
         desc: 'Del cronograma al cierre, en un solo lugar. Tareas asignadas, subcontratistas coordinados y documentos ordenados sin cambiar de herramienta.',
-        img: '/images/Actor_ProjectManager.jpeg',
+        img: '/images/Actor_ProjectManager.webp',
         icon: HardHat,
     },
     {
         chip: 'Contratista / Sub',
         desc: 'Reportá avance desde la obra con fotos. Recibí asignaciones claras. Sin reuniones innecesarias, sin reportes manuales a fin de mes.',
-        img: '/images/Actor_Contratista.jpeg',
+        img: '/images/Actor_Contratista.webp',
         icon: Wrench,
     },
 ];
@@ -1114,12 +1114,12 @@ function EcosystemSection({ lang }) {
 
 // ─── About Us ─────────────────────────────────────────────────────────────────
 const TEAM_ES = [
-    { name: 'Juan Devera',  experience: '10', img: '/images/Juan_devera_ceo.jpeg', role: 'Fundador', quote: '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' },
-    { name: 'Luciano Reca', experience: '7',  img: '/images/Luciano_Reca.jpeg',    role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."', study: 'Finanzas' },
+    { name: 'Juan Devera',  experience: '10', img: '/images/Juan_devera_ceo.webp', role: 'Fundador', quote: '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' },
+    { name: 'Luciano Reca', experience: '7',  img: '/images/Luciano_Reca.webp',    role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."', study: 'Finanzas' },
 ];
 const TEAM_EN = [
-    { name: 'Juan Devera',  experience: '10', img: '/images/Juan_devera_ceo.jpeg', role: 'Founder', quote: '"We created Arqy because real estate needed a digital infrastructure that connects capital, construction and community into a single source of truth."', study: 'Finance' },
-    { name: 'Luciano Reca', experience: '7',  img: '/images/Luciano_Reca.jpeg',    role: 'Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqy is the operating system that changes everything."', study: 'Finance' },
+    { name: 'Juan Devera',  experience: '10', img: '/images/Juan_devera_ceo.webp', role: 'Founder', quote: '"We created Arqy because real estate needed a digital infrastructure that connects capital, construction and community into a single source of truth."', study: 'Finance' },
+    { name: 'Luciano Reca', experience: '7',  img: '/images/Luciano_Reca.webp',    role: 'Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqy is the operating system that changes everything."', study: 'Finance' },
 ];
 
 

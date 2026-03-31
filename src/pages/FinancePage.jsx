@@ -185,7 +185,7 @@ function FinanceHero({ lang }) {
         <section ref={ref} className="relative w-full h-screen min-h-[700px] overflow-hidden flex items-center">
             <motion.div className="absolute inset-0 z-0" style={{ y: imgY }}>
                 <img
-                    src="/images/Finance_Hero.jpeg"
+                    src="/images/Finance_Hero.webp"
                     alt="Director financiero revisando reportes de obra"
                     className="w-full h-full object-cover object-center scale-110"
                 />
@@ -415,9 +415,9 @@ function MetricsSection({ lang }) {
 
 // ─── Finance Showcase (3 columns) ─────────────────────────────────────────────
 const SHOWCASE_IMAGES = [
-    '/images/Finance_ingresos.jpeg',
-    '/images/Finance_proyectos.jpeg',
-    '/images/Finance_dashboard.jpeg',
+    '/images/Finance_ingresos.webp',
+    '/images/Finance_proyectos.webp',
+    '/images/Finance_dashboard.webp',
 ];
 
 function FinanceShowcase({ lang }) {
@@ -492,32 +492,32 @@ const SOLUTIONS = [
     {
         title: 'Registro de ingresos',
         desc: 'Alta manual de ingresos por obra y cliente con fecha, monto y motivo. Todo trazable, todo asignado a su proyecto.',
-        img: '/images/Finance_ingresos_feat.jpeg',
+        img: '/images/Finance_ingresos_feat.webp',
     },
     {
         title: 'Vista consolidada de egresos',
         desc: 'Todos los egresos en un solo lugar: materiales (desde Procurement), mano de obra y tercerizados (desde Team Management). Automático.',
-        img: '/images/Finance_egresos.jpeg',
+        img: '/images/Finance_egresos.webp',
     },
     {
         title: 'Overview por empresa',
         desc: 'Ingresos totales vs egresos totales de toda la empresa. Vista global del negocio en tiempo real.',
-        img: '/images/Finance_empresa.jpeg',
+        img: '/images/Finance_empresa.webp',
     },
     {
         title: 'Overview por obra',
         desc: 'Ingresos vs egresos específicos de cada proyecto. Rentabilidad por obra, siempre actualizada.',
-        img: '/images/Finance_obra.jpeg',
+        img: '/images/Finance_obra.webp',
     },
     {
         title: 'Balance en tiempo real',
         desc: 'El balance se recalcula automáticamente cada vez que entra un ingreso o se registra un gasto en cualquier módulo.',
-        img: '/images/Finance_balance.jpeg',
+        img: '/images/Finance_balance.webp',
     },
     {
         title: 'Filtros por obra y período',
         desc: 'Ver finanzas de una obra específica o de un rango de fechas determinado. Flexibilidad total para analizar tus datos.',
-        img: '/images/Finance_filtros.jpeg',
+        img: '/images/Finance_filtros.webp',
     },
 ];
 
@@ -767,17 +767,17 @@ const ACTORS = [
     {
         chip: 'Director / Dueño',
         desc: 'Dashboard financiero de toda la empresa en un clic. Sabé cuánto entra, cuánto sale y cuánto margen queda — sin esperar el cierre de mes.',
-        img: '/images/Actor_Director.jpeg',
+        img: '/images/Actor_Director.webp',
     },
     {
         chip: 'Contador / Administrador',
         desc: 'Datos financieros de todas las obras consolidados automáticamente. Sin Excel, sin reconciliaciones manuales, sin transcripción de datos.',
-        img: '/images/Actor_Contador.jpeg',
+        img: '/images/Actor_Contador.webp',
     },
     {
         chip: 'Project Manager',
         desc: 'Flujo de caja y presupuesto de tu obra bajo control. Sabé si vas en presupuesto y anticipá problemas antes de que frenen la obra.',
-        img: '/images/Actor_ProjectManager.jpeg',
+        img: '/images/Actor_ProjectManager.webp',
     },
 ];
 
@@ -987,12 +987,12 @@ function EcosystemSection({ lang }) {
 
 // ─── About Us ─────────────────────────────────────────────────────────────────
 const TEAM_ES = [
-    { name: 'Juan Devera',  experience: '10', img: '/images/Juan_devera_ceo.jpeg', role: 'Fundador', quote: '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' },
-    { name: 'Luciano Reca', experience: '7',  img: '/images/Luciano_Reca.jpeg',    role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."', study: 'Finanzas' },
+    { name: 'Juan Devera',  experience: '10', img: '/images/Juan_devera_ceo.webp', role: 'Fundador', quote: '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' },
+    { name: 'Luciano Reca', experience: '7',  img: '/images/Luciano_Reca.webp',    role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."', study: 'Finanzas' },
 ];
 const TEAM_EN = [
-    { name: 'Juan Devera',  experience: '10', img: '/images/Juan_devera_ceo.jpeg', role: 'Founder', quote: '"We created Arqy because real estate needed a digital infrastructure that connects capital, construction and community into a single source of truth."', study: 'Finance' },
-    { name: 'Luciano Reca', experience: '7',  img: '/images/Luciano_Reca.jpeg',    role: 'Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqy is the operating system that changes everything."', study: 'Finance' },
+    { name: 'Juan Devera',  experience: '10', img: '/images/Juan_devera_ceo.webp', role: 'Founder', quote: '"We created Arqy because real estate needed a digital infrastructure that connects capital, construction and community into a single source of truth."', study: 'Finance' },
+    { name: 'Luciano Reca', experience: '7',  img: '/images/Luciano_Reca.webp',    role: 'Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqy is the operating system that changes everything."', study: 'Finance' },
 ];
 
 

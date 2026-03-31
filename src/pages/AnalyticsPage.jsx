@@ -185,7 +185,7 @@ function AnalyticsHero({ lang }) {
             {/* Background image with parallax */}
             <motion.div className="absolute inset-0 z-0" style={{ y: imgY }}>
                 <img
-                    src="/images/Analytics_Hero.jpeg"
+                    src="/images/Analytics_Hero.webp"
                     alt="Director revisando analytics de obra"
                     className="w-full h-full object-cover object-center scale-110"
                 />
@@ -544,32 +544,32 @@ const SOLUTIONS = [
     {
         title: 'Dashboard general',
         desc: 'Vista unificada de todas las obras: avance, presupuesto, equipo y compras. El dueño ve todo en 30 segundos sin reportes manuales.',
-        img: '/images/Analytics_dashboard.jpeg',
+        img: '/images/Analytics_dashboard.webp',
     },
     {
         title: 'Presupuesto vs real',
         desc: 'Comparativa por partida en tiempo real. Sabés exactamente dónde está el desvío, cuánto cuesta y qué lo generó.',
-        img: '/images/Analytics_presupuesto.jpeg',
+        img: '/images/Analytics_presupuesto.webp',
     },
     {
         title: 'Avance de obra',
         desc: 'Porcentaje de avance por tarea, etapa y obra. Correlacionado con el cronograma para ver si vas adelantado o atrasado.',
-        img: '/images/Analytics_avance.jpeg',
+        img: '/images/Analytics_avance.webp',
     },
     {
         title: 'Performance de equipo',
         desc: 'Métricas de productividad por persona y por obra. Quién cumple plazos, quién los supera y dónde hay cuellos de botella.',
-        img: '/images/Analytics_equipo.jpeg',
+        img: '/images/Analytics_equipo.webp',
     },
     {
         title: 'Análisis de compras',
         desc: 'Gasto por proveedor, categoría y obra. Detectá duplicaciones, comparaciones de precios y tendencias de compra.',
-        img: '/images/Analytics_compras.jpeg',
+        img: '/images/Analytics_compras.webp',
     },
     {
         title: 'Reportes exportables',
         desc: 'Generá reportes en PDF o Excel con un clic. Para clientes, inversores o auditorías. Con el logo y formato de tu empresa.',
-        img: '/images/Analytics_reportes.jpeg',
+        img: '/images/Analytics_reportes.webp',
     },
 ];
 
@@ -835,19 +835,19 @@ const ACTORS = [
     {
         chip: 'Director / Dueño',
         desc: 'Dashboards de todas las obras en un clic. Desvíos, avances y costos sin esperar el reporte del lunes.',
-        img: '/images/Actor_Director.jpeg',
+        img: '/images/Actor_Director.webp',
         icon: Building2,
     },
     {
         chip: 'Arquitecto / Project Manager',
         desc: 'Métricas de cada obra bajo tu control. Sabés si vas en tiempo, en presupuesto y con el equipo correcto.',
-        img: '/images/Actor_Arquitecta.jpeg',
+        img: '/images/Actor_Arquitecta.webp',
         icon: HardHat,
     },
     {
         chip: 'Contador / Administrador',
         desc: 'Datos financieros de todas las obras consolidados automáticamente. Sin Excel, sin reconciliaciones manuales.',
-        img: '/images/Actor_Contador.jpeg',
+        img: '/images/Actor_Contador.webp',
         icon: Building2,
     },
 ];
@@ -1065,12 +1065,12 @@ function EcosystemSection({ lang }) {
 
 // ─── About Us ─────────────────────────────────────────────────────────────────
 const TEAM_ES = [
-    { name: 'Juan Devera',  experience: '10', img: '/images/Juan_devera_ceo.jpeg', role: 'Fundador', quote: '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' },
-    { name: 'Luciano Reca', experience: '7',  img: '/images/Luciano_Reca.jpeg',    role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."', study: 'Finanzas' },
+    { name: 'Juan Devera',  experience: '10', img: '/images/Juan_devera_ceo.webp', role: 'Fundador', quote: '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' },
+    { name: 'Luciano Reca', experience: '7',  img: '/images/Luciano_Reca.webp',    role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."', study: 'Finanzas' },
 ];
 const TEAM_EN = [
-    { name: 'Juan Devera',  experience: '10', img: '/images/Juan_devera_ceo.jpeg', role: 'Founder', quote: '"We created Arqy because real estate needed a digital infrastructure that connects capital, construction and community into a single source of truth."', study: 'Finance' },
-    { name: 'Luciano Reca', experience: '7',  img: '/images/Luciano_Reca.jpeg',    role: 'Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqy is the operating system that changes everything."', study: 'Finance' },
+    { name: 'Juan Devera',  experience: '10', img: '/images/Juan_devera_ceo.webp', role: 'Founder', quote: '"We created Arqy because real estate needed a digital infrastructure that connects capital, construction and community into a single source of truth."', study: 'Finance' },
+    { name: 'Luciano Reca', experience: '7',  img: '/images/Luciano_Reca.webp',    role: 'Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqy is the operating system that changes everything."', study: 'Finance' },
 ];
 
 

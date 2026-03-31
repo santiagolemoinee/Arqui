@@ -182,7 +182,7 @@ function ProcurementHero({ lang }) {
         <section ref={ref} className="relative w-full h-screen min-h-[700px] overflow-hidden flex items-center">
             <motion.div className="absolute inset-0 z-0" style={{ y: imgY }}>
                 <img
-                    src="/images/Procurement_Hero.jpeg"
+                    src="/images/Procurement_Hero.webp"
                     alt="Encargado de compras revisando órdenes"
                     className="w-full h-full object-cover object-center scale-110"
                 />
@@ -676,32 +676,32 @@ const SOLUTIONS = [
     {
         title: 'Órdenes de compra',
         desc: 'Generá y gestioná OC desde cualquier lugar. El proveedor recibe notificación automática, el equipo ve el estado en tiempo real. Sin email, sin llamadas.',
-        img: '/images/Procurement_ordenes.jpeg',
+        img: '/images/Procurement_ordenes.webp',
     },
     {
         title: 'Gestión de proveedores',
         desc: 'Catálogo centralizado con historial de compras, precios pactados y calificación por proveedor. Elegí siempre la mejor opción con datos, no con memoria.',
-        img: '/images/Procurement_proveedores.jpeg',
+        img: '/images/Procurement_proveedores.webp',
     },
     {
         title: 'Control de stock',
         desc: 'Inventario en tiempo real por obra. Sabés qué tenés, qué falta y qué necesitás pedir antes de que frene la producción.',
-        img: '/images/Procurement_stock.jpeg',
+        img: '/images/Procurement_stock.webp',
     },
     {
         title: 'Flujo de aprobaciones',
         desc: 'Las solicitudes van al responsable correcto sin burocracia. Se aprueba desde el celular en segundos, con trazabilidad completa de quién aprobó qué.',
-        img: '/images/Procurement_aprobaciones.jpeg',
+        img: '/images/Procurement_aprobaciones.webp',
     },
     {
         title: 'Matching de facturas',
         desc: 'La factura se cruza automáticamente con la OC. Las diferencias se detectan antes de pagar. Sin sorpresas, sin pagos duplicados.',
-        img: '/images/Procurement_facturas.jpeg',
+        img: '/images/Procurement_facturas.webp',
     },
     {
         title: 'Reportes de gasto',
         desc: 'Visibilidad del gasto por proveedor, categoría y obra. El dueño ve dónde va el dinero antes de que sea un problema.',
-        img: '/images/Procurement_reportes.jpeg',
+        img: '/images/Procurement_reportes.webp',
     },
 ];
 
@@ -949,17 +949,17 @@ const ACTORS = [
     {
         chip: 'Jefe de Obra / Capataz',
         desc: 'Pedí materiales desde la obra en segundos. Sin llamadas, sin planillas. El pedido llega al responsable correcto y volvés a trabajar.',
-        img: '/images/Actor_Capataz.jpeg',
+        img: '/images/Actor_Capataz.webp',
     },
     {
         chip: 'Encargado de Compras',
         desc: 'Todas las solicitudes centralizadas, priorizadas y con contexto. Aprobás en el celular, el sistema genera la OC. Sin papel, sin retrasos.',
-        img: '/images/Actor_EncargadoCompras.jpeg',
+        img: '/images/Actor_EncargadoCompras.webp',
     },
     {
         chip: 'Director / Dueño',
         desc: 'Visibilidad total del gasto por obra, proveedor y categoría. Sabés dónde va el dinero antes de que el reporte llegue tarde.',
-        img: '/images/Actor_Director.jpeg',
+        img: '/images/Actor_Director.webp',
     },
 ];
 
@@ -1168,12 +1168,12 @@ function EcosystemSection({ lang }) {
 
 // ─── About Us ─────────────────────────────────────────────────────────────────
 const TEAM_ES = [
-    { name: 'Juan Devera',  experience: '10', img: '/images/Juan_devera_ceo.jpeg', role: 'Fundador', quote: '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' },
-    { name: 'Luciano Reca', experience: '7',  img: '/images/Luciano_Reca.jpeg',    role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."', study: 'Finanzas' },
+    { name: 'Juan Devera',  experience: '10', img: '/images/Juan_devera_ceo.webp', role: 'Fundador', quote: '"Creamos Arqy porque el real estate necesitaba una infraestructura digital que conecte capital, construcción y comunidad en una única fuente de verdad."', study: 'Finanzas' },
+    { name: 'Luciano Reca', experience: '7',  img: '/images/Luciano_Reca.webp',    role: 'Fundador', quote: '"Nuestra misión es profesionalizar una industria que durante décadas operó con herramientas del siglo pasado. Arqy es el sistema operativo que lo cambia todo."', study: 'Finanzas' },
 ];
 const TEAM_EN = [
-    { name: 'Juan Devera',  experience: '10', img: '/images/Juan_devera_ceo.jpeg', role: 'Founder', quote: '"We created Arqy because real estate needed a digital infrastructure that connects capital, construction and community into a single source of truth."', study: 'Finance' },
-    { name: 'Luciano Reca', experience: '7',  img: '/images/Luciano_Reca.jpeg',    role: 'Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqy is the operating system that changes everything."', study: 'Finance' },
+    { name: 'Juan Devera',  experience: '10', img: '/images/Juan_devera_ceo.webp', role: 'Founder', quote: '"We created Arqy because real estate needed a digital infrastructure that connects capital, construction and community into a single source of truth."', study: 'Finance' },
+    { name: 'Luciano Reca', experience: '7',  img: '/images/Luciano_Reca.webp',    role: 'Founder', quote: '"Our mission is to professionalize an industry that for decades operated with last century\'s tools. Arqy is the operating system that changes everything."', study: 'Finance' },
 ];
 
 
