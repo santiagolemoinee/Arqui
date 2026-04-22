@@ -653,7 +653,7 @@ const Hero = () => {
                             style={{
                                 fontSize: 'clamp(15px, 4vw, 19px)',
                                 lineHeight: 'clamp(24px, 5.5vw, 32px)',
-                                fontWeight: '800',
+                                fontWeight: '400',
                                 opacity: '0.8',
                                 fontFamily: "'Inter', sans-serif"
                             }}
